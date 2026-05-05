@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fun Nails - Zwickau | Premium Nails & Wimpernverlängerung</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             --bg-white: #ffffff;
@@ -15,16 +18,20 @@
             --text-dark: #1a1a1a;
             --text-muted: #555555;
             --border-light: #eaeaea;
-            
+
             /* Tông Đỏ Sang Trọng làm điểm nhấn */
-            --red-primary: #D32F2F; 
+            --red-primary: #D32F2F;
             --red-hover: #b71c1c;
             --red-light: rgba(211, 47, 47, 0.05);
 
             --section-padding: 5rem 5%;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -33,16 +40,21 @@
             line-height: 1.8;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            -ms-overflow-style: none;  
-            scrollbar-width: none;  
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
-        body::-webkit-scrollbar { display: none; }
 
-        /* --- HEADER & MEGA MENU --- */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* =========================================
+           HEADER BỐ CỤC THEO ẢNH NC NAILS
+           ========================================= */
         header {
             background-color: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
-            padding: 15px 5%;
+            padding: 12px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -50,281 +62,1111 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
             transition: padding 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
         }
 
-        .logo-link { display: flex; align-items: center; z-index: 1001; text-decoration: none;}
-        .logo-img { max-height: 50px; width: auto; transition: transform 0.3s ease; object-fit: contain; }
-        .logo-link:hover .logo-img { transform: scale(1.05); }
-
-        .menu-toggle { display: none; font-size: 1.8rem; color: var(--red-primary); cursor: pointer; z-index: 1001; }
-
-        nav { display: flex; align-items: center; gap: 2rem; height: 100%;}
-        
-        .nav-list { list-style: none; display: flex; gap: 2rem; align-items: center; margin: 0; height: 100%;}
-        .nav-list li { position: relative; height: 100%; display: flex; align-items: center; padding: 15px 0;}
-        .nav-list li > a {
-            text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 0.85rem;
-            text-transform: uppercase; letter-spacing: 1px; position: relative; transition: color 0.3s;
-            display: flex; align-items: center; gap: 5px; cursor: pointer;
+        .logo-link {
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+            text-decoration: none;
         }
-        .nav-list li > a::after {
-            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
-            background: var(--red-primary); transition: width 0.3s ease;
-        }
-        .nav-list li > a:hover { color: var(--red-primary); }
-        .nav-list li > a:hover::after { width: 100%; }
 
-        /* Mega Menu */
-        .has-mega-menu:hover .mega-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-        .mega-menu {
-            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px);
-            background-color: var(--bg-white); width: max-content; padding: 20px; border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; gap: 20px; opacity: 0; visibility: hidden;
-            transition: all 0.3s ease; z-index: 1000; border-top: 3px solid var(--red-primary);
+        .logo-img {
+            max-height: 45px;
+            width: auto;
+            transition: transform 0.3s ease;
+            object-fit: contain;
         }
-        .mega-item { width: 200px; display: flex; flex-direction: column; align-items: center; text-decoration: none; transition: transform 0.3s ease;}
-        .mega-item:hover { transform: translateY(-5px); }
-        .mega-img-box { width: 100%; height: 120px; overflow: hidden; border-radius: 5px; margin-bottom: 10px; border: 1px solid var(--border-light); }
-        .mega-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; filter: grayscale(10%); }
-        .mega-item:hover .mega-img-box img { transform: scale(1.1); filter: grayscale(0%); }
-        .mega-item span { color: var(--red-primary); font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.1rem; }
-        .mega-item p { color: var(--text-muted); font-size: 0.8rem; text-align: center; margin-top: 5px; font-weight: 300; line-height: 1.4;}
+
+        .logo-link:hover .logo-img {
+            transform: scale(1.05);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--red-primary);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-links-wrapper {
+            border-bottom: 1.5px solid var(--border-light);
+            padding-bottom: 8px;
+            margin-right: 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            margin: 0;
+        }
+
+        .nav-list li {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list li>a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .nav-list li>a:hover {
+            color: var(--red-primary);
+        }
 
         .header-btn {
-            background: var(--red-primary); color: var(--bg-white); padding: 10px 25px; border-radius: 4px;
-            text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: background 0.3s, transform 0.3s;
-            text-transform: uppercase; letter-spacing: 1px;
+            background: var(--red-primary);
+            color: var(--bg-white);
+            padding: 10px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.3s, transform 0.3s;
+            border: none;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
         }
-        .header-btn:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);}
+
+        .header-btn:hover {
+            background: var(--red-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
+        }
+
+        /* Mega Menu */
+        .has-mega-menu:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mega-menu {
+            position: absolute;
+            top: calc(100% + 15px);
+            left: 50%;
+            transform: translateX(-50%) translateY(15px);
+            background-color: var(--bg-white);
+            width: max-content;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border-top: 3px solid var(--red-primary);
+        }
+
+        .mega-item {
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .mega-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .mega-img-box {
+            width: 100%;
+            height: 120px;
+            overflow: hidden;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-light);
+        }
+
+        .mega-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            filter: grayscale(10%);
+        }
+
+        .mega-item:hover .mega-img-box img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .mega-item span {
+            color: var(--red-primary);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .mega-item p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: 5px;
+            font-weight: 300;
+            line-height: 1.4;
+        }
 
         /* --- GLOBAL TITLES --- */
-        section { padding: var(--section-padding); }
-        .section-title {
-            text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem;
-            color: var(--text-dark); margin-bottom: 3.5rem; font-weight: 600; letter-spacing: 1px;
+        section {
+            padding: var(--section-padding);
         }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 3.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
         .section-title::after {
-            content: ''; display: block; width: 50px; height: 3px; background: var(--red-primary);
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--red-primary);
             margin: 20px auto 0;
         }
 
-        /* --- HERO SECTION --- */
-        .hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 60px; }
-        .hero::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url('11.jpg') center/cover;
-            z-index: -1; animation: bgZoom 25s infinite alternate ease-in-out;
+        /* =========================================
+           HERO SECTION: MỚI (BỐ CỤC ẢNH VÀ CHỮ SONG SONG)
+           ========================================= */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            overflow: hidden;
         }
-        @keyframes bgZoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
 
-        .hero-content { z-index: 1; max-width: 800px; padding: 0 20px; }
-        .hero h1 { 
-            font-family: 'Playfair Display', serif; font-size: 4.5rem; color: var(--bg-white);
-            margin-bottom: 1rem; line-height: 1.2; font-weight: 600; letter-spacing: 3px; animation: fadeInDown 1s ease forwards; 
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('11.jpg') center/cover;
+            z-index: -1;
+            animation: bgZoom 25s infinite alternate ease-in-out;
         }
-        .hero p { font-size: 1.1rem; margin-bottom: 3.5rem; color: rgba(255,255,255,0.9); font-weight: 400; letter-spacing: 3px; animation: fadeInUp 1s ease 0.3s forwards; opacity: 0; text-transform: uppercase; }
-        
+
+        @keyframes bgZoom {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 1100px;
+            /* Đã tăng chiều rộng tổng thể để có chỗ cho ảnh to hơn */
+            width: 100%;
+            padding: 0 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5rem;
+        }
+
+        .hero-img-box {
+            flex-shrink: 0;
+            animation: fadeInUp 1s ease forwards;
+            opacity: 0;
+        }
+
+        .hero-img-box img {
+            width: 380px;
+            height: 530px;
+            /* Kích thước cũ là 320x450, đã tăng lên khá to và cân đối */
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            border: 3px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .hero-text-box {
+            text-align: center;
+            animation: fadeInRight 1s ease 0.3s forwards;
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: var(--bg-white);
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
         .btn-main {
-            display: inline-block; padding: 15px 45px; background-color: var(--red-primary); color: var(--bg-white);
-            text-decoration: none; border-radius: 4px; font-weight: 600; letter-spacing: 2px;
-            text-transform: uppercase; transition: all 0.4s ease; animation: fadeIn 1s ease 0.6s forwards; opacity: 0; font-size: 0.9rem;
+            display: inline-block;
+            padding: 15px 45px;
+            background-color: var(--red-primary);
+            color: var(--bg-white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            font-size: 0.9rem;
             box-shadow: 0 5px 20px rgba(211, 47, 47, 0.4);
         }
-        .btn-main:hover { background-color: var(--red-hover); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(211, 47, 47, 0.5);}
+
+        .btn-main:hover {
+            background-color: var(--red-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.5);
+        }
 
         /* --- ABOUT US --- */
-        #ueber-uns { background-color: var(--bg-white); }
-        .about-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1100px; margin: 0 auto; }
-        .about-text { font-size: 1.05rem; color: var(--text-muted); text-align: justify; font-weight: 400; line-height: 1.9;}
-        .about-text strong { color: var(--red-primary); font-weight: 600; }
-        .about-image { position: relative; }
-        .about-image::after {
-            content: ''; position: absolute; top: 20px; left: 20px; right: -20px; bottom: -20px;
-            background-color: var(--red-light); z-index: 0; border-radius: 8px;
+        #ueber-uns {
+            background-color: var(--bg-white);
         }
-        .about-image img { width: 100%; position: relative; z-index: 1; border-radius: 8px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.08);}
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            text-align: justify;
+            font-weight: 400;
+            line-height: 1.9;
+        }
+
+        .about-text strong {
+            color: var(--red-primary);
+            font-weight: 600;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            background-color: var(--red-light);
+            z-index: 0;
+            border-radius: 8px;
+        }
+
+        .about-image img {
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
 
         /* --- SERVICES CARDS --- */
-        #leistungen { background-color: var(--bg-gray); }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto; }
-        .service-card { background: var(--bg-white); padding: 3.5rem 2rem; text-align: center; border-radius: 8px; border: 1px solid var(--border-light); transition: all 0.4s ease; }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.05); border-color: var(--red-primary); }
-        .service-card i { font-size: 2.8rem; margin-bottom: 1.5rem; transition: transform 0.4s; color: var(--red-primary); }
-        .service-card:hover i { transform: scale(1.1); }
-        .service-card h3 { color: var(--text-dark); margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; }
-        .service-card p { font-weight: 400; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;}
+        #leistungen {
+            background-color: var(--bg-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--bg-white);
+            padding: 3.5rem 2rem;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            border-color: var(--red-primary);
+        }
+
+        .service-card i {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.4s;
+            color: var(--red-primary);
+        }
+
+        .service-card:hover i {
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            font-weight: 400;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
 
         /* --- PRICING --- */
-        #preise { background-color: var(--bg-white); }
-        .pricing-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 4rem; max-width: 1200px; margin: 0 auto; }
-        .pricing-box { background: var(--bg-white); padding: 3rem; border-radius: 12px; border: 1px solid var(--border-light); box-shadow: 0 10px 40px rgba(0,0,0,0.03);}
-        .pricing-box h3.box-title { text-align: center; color: var(--text-dark); font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 2rem; font-weight: 600; border-bottom: 2px solid var(--red-light); padding-bottom: 1.5rem;}
-        
-        .pricing-img-wrapper { overflow: hidden; margin-bottom: 2.5rem; border-radius: 8px; }
-        .pricing-img-wrapper img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.8s ease; display: block; filter: brightness(0.95);}
-        .pricing-img-wrapper:hover img { transform: scale(1.05); filter: brightness(1);}
+        #preise {
+            background-color: var(--bg-white);
+        }
 
-        .pricing-category { margin-bottom: 2.5rem; }
-        .pricing-category h4 { color: var(--red-primary); font-size: 0.9rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; text-align: center; background: var(--red-light); padding: 8px 0; border-radius: 4px;}
-        
-        .price-item { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.8rem; }
-        .price-name { font-weight: 500; color: var(--text-muted); font-size: 0.95rem; padding-right: 10px; background: var(--bg-white); z-index: 1;}
-        .price-dots { flex-grow: 1; border-bottom: 1px dotted #ccc; margin: 0 5px; position: relative; top: -5px; z-index: 0;}
-        .price-value { font-weight: 600; color: var(--text-dark); white-space: nowrap; font-size: 1.05rem; padding-left: 10px; background: var(--bg-white); z-index: 1;}
-        .pricing-note { margin-top: 2.5rem; text-align: center; font-size: 0.85rem; color: #888; font-style: italic; font-weight: 400; border-top: 1px solid var(--border-light); padding-top: 1.5rem; line-height: 1.6;}
+        .pricing-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-box {
+            background: var(--bg-white);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+        }
+
+        .pricing-box h3.box-title {
+            text-align: center;
+            color: var(--text-dark);
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            border-bottom: 2px solid var(--red-light);
+            padding-bottom: 1.5rem;
+        }
+
+        .pricing-img-wrapper {
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+            border-radius: 8px;
+        }
+
+        .pricing-img-wrapper img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+            display: block;
+            filter: brightness(0.95);
+        }
+
+        .pricing-img-wrapper:hover img {
+            transform: scale(1.05);
+            filter: brightness(1);
+        }
+
+        .pricing-category {
+            margin-bottom: 2.5rem;
+        }
+
+        .pricing-category h4 {
+            color: var(--red-primary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-align: center;
+            background: var(--red-light);
+            padding: 8px 0;
+            border-radius: 4px;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.8rem;
+        }
+
+        .price-name {
+            font-weight: 500;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            padding-right: 10px;
+            background: var(--bg-white);
+            z-index: 1;
+        }
+
+        .price-dots {
+            flex-grow: 1;
+            border-bottom: 1px dotted #ccc;
+            margin: 0 5px;
+            position: relative;
+            top: -5px;
+            z-index: 0;
+        }
+
+        .price-value {
+            font-weight: 600;
+            color: var(--text-dark);
+            white-space: nowrap;
+            font-size: 1.05rem;
+            padding-left: 10px;
+            background: var(--bg-white);
+            z-index: 1;
+        }
+
+        .pricing-note {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+            font-style: italic;
+            font-weight: 400;
+            border-top: 1px solid var(--border-light);
+            padding-top: 1.5rem;
+            line-height: 1.6;
+        }
 
         /* --- TESTIMONIALS SLIDER --- */
-        .testimonials { background-color: var(--bg-light); text-align: center; overflow: hidden; padding: 6rem 5%; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);}
-        .testi-slider-container { width: 100%; overflow: hidden; padding: 1rem 0; position: relative; }
-        .testi-track { display: flex; gap: 2.5rem; width: max-content; animation: scroll-left 40s linear infinite; }
-        .testi-track:hover { animation-play-state: paused; }
-        .testi-card { 
-            background: var(--bg-white); padding: 3rem 2.5rem; border: 1px solid var(--border-light); border-top: 3px solid var(--red-primary); border-radius: 8px; transition: all 0.4s ease;
-            width: 420px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: space-between; text-align: center; box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+        .testimonials {
+            background-color: var(--bg-light);
+            text-align: center;
+            overflow: hidden;
+            padding: 6rem 5%;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
         }
-        .testi-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(211, 47, 47, 0.08);}
-        .stars { margin-bottom: 25px; font-size: 0.9rem; letter-spacing: 5px; color: #ffb400; }
-        .testi-text { font-style: italic; font-weight: 400; margin-bottom: 30px; font-size: 1.05rem; color: var(--text-muted); font-family: 'Playfair Display', serif; line-height: 1.8;}
-        .testi-name { font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dark);}
-        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 1.25rem)); } }
 
-        /* --- GALLERY MASONRY (Đã fix lỗi cắt hình) --- */
-        #galerie { background-color: var(--bg-white); }
+        .testi-slider-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 1rem 0;
+            position: relative;
+        }
+
+        .testi-track {
+            display: flex;
+            gap: 2.5rem;
+            width: max-content;
+            animation: scroll-left 40s linear infinite;
+        }
+
+        .testi-track:hover {
+            animation-play-state: paused;
+        }
+
+        .testi-card {
+            background: var(--bg-white);
+            padding: 3rem 2.5rem;
+            border: 1px solid var(--border-light);
+            border-top: 3px solid var(--red-primary);
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            width: 420px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        .testi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(211, 47, 47, 0.08);
+        }
+
+        .stars {
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            letter-spacing: 5px;
+            color: #ffb400;
+        }
+
+        .testi-text {
+            font-style: italic;
+            font-weight: 400;
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            font-family: 'Playfair Display', serif;
+            line-height: 1.8;
+        }
+
+        .testi-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-dark);
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-50% - 1.25rem));
+            }
+        }
+
+        /* --- GALLERY MASONRY --- */
+        #galerie {
+            background-color: var(--bg-white);
+        }
+
         .gallery-masonry {
-            column-count: 4; 
+            column-count: 4;
             column-gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
+
         .gallery-item {
-            break-inside: avoid; 
+            break-inside: avoid;
             margin-bottom: 20px;
             border-radius: 8px;
             overflow: hidden;
             position: relative;
             cursor: pointer;
         }
+
         .gallery-item img {
             width: 100%;
-            height: auto; 
+            height: auto;
             display: block;
             transition: transform 0.8s ease;
         }
+
         .gallery-item:hover img {
             transform: scale(1.05);
         }
 
         /* --- INFO / KONTAKT --- */
-        #kontakt { background-color: var(--bg-gray); padding-top: 6rem; }
-        .info-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0; max-width: 1200px; margin: 0 auto; border: 1px solid var(--border-light); background: var(--bg-white); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03);}
-        .info-card { padding: 4rem 2rem; text-align: center; border-right: 1px solid var(--border-light); transition: all 0.4s ease; }
-        .info-card:last-child { border-right: none; }
-        .info-card:hover { background-color: var(--red-primary); }
-        .info-card i { font-size: 2.2rem; color: var(--red-primary); margin-bottom: 1.5rem; transition: transform 0.4s; }
-        .info-card:hover i { transform: scale(1.1); color: var(--bg-white); }
-        .info-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600; color: var(--text-dark); transition: color 0.4s;}
-        .info-card p, .info-card a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.4s; line-height: 1.6;}
-        .info-card:hover h3, .info-card:hover p, .info-card:hover a { color: var(--bg-white); }
+        #kontakt {
+            background-color: var(--bg-gray);
+            padding-top: 6rem;
+        }
+
+        .info-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 1px solid var(--border-light);
+            background: var(--bg-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        }
+
+        .info-card {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-right: 1px solid var(--border-light);
+            transition: all 0.4s ease;
+        }
+
+        .info-card:last-child {
+            border-right: none;
+        }
+
+        .info-card:hover {
+            background-color: var(--red-primary);
+        }
+
+        .info-card i {
+            font-size: 2.2rem;
+            color: var(--red-primary);
+            margin-bottom: 1.5rem;
+            transition: transform 0.4s;
+        }
+
+        .info-card:hover i {
+            transform: scale(1.1);
+            color: var(--bg-white);
+        }
+
+        .info-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: color 0.4s;
+        }
+
+        .info-card p,
+        .info-card a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.4s;
+            line-height: 1.6;
+        }
+
+        .info-card:hover h3,
+        .info-card:hover p,
+        .info-card:hover a {
+            color: var(--bg-white);
+        }
 
         /* --- FOOTER --- */
-        footer { 
-            background: #111111; 
-            color: #cccccc; 
-            padding: 6rem 5% 2rem; 
+        footer {
+            background: #111111;
+            color: #cccccc;
+            padding: 6rem 5% 2rem;
         }
-        
-        .footer-logo-container { text-align: center; margin-bottom: 4rem; }
-        .footer-logo { max-width: 180px; object-fit: contain; }
 
-        .footer-content { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1200px; margin: 0 auto; text-align: left; }
-        .footer-col h3 { font-size: 1.5rem; margin-bottom: 2rem; font-family: 'Playfair Display', serif; font-weight: 500; color: var(--bg-white); border-bottom: 1px solid #333; padding-bottom: 15px; display: inline-block;}
-        .footer-col p { font-size: 0.95rem; margin-bottom: 15px; font-weight: 300; line-height: 1.6; }
-        .footer-col p strong { font-weight: 500; color: var(--bg-white); }
-        .footer-map iframe { width: 100%; height: 280px; border-radius: 8px; border: none; filter: grayscale(50%); transition: filter 0.5s;}
-        .footer-map iframe:hover { filter: grayscale(0%); }
+        .footer-logo-container {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
 
-        .footer-bottom { text-align: center; margin-top: 5rem; padding-top: 2rem; border-top: 1px solid #222; font-size: 0.8rem; font-weight: 300; letter-spacing: 1px;}
+        .footer-logo {
+            max-width: 180px;
+            object-fit: contain;
+        }
 
-        .social-links { margin-top: 2rem; display: flex; gap: 15px;}
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            color: var(--bg-white);
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+
+        .footer-col p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .footer-col p strong {
+            font-weight: 500;
+            color: var(--bg-white);
+        }
+
+        .footer-col p a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col p a:hover {
+            color: var(--red-primary);
+        }
+
+        .footer-map iframe {
+            width: 100%;
+            height: 280px;
+            border-radius: 8px;
+            border: none;
+            filter: grayscale(50%);
+            transition: filter 0.5s;
+        }
+
+        .footer-map iframe:hover {
+            filter: grayscale(0%);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #222;
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 15px;
+        }
+
         .social-links a {
-            display: inline-flex; justify-content: center; align-items: center; width: 45px; height: 45px;
-            background-color: rgba(255,255,255,0.05); color: var(--bg-white); border-radius: 50%;
-            font-size: 1.2rem; transition: all 0.4s ease; text-decoration: none;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--bg-white);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
+            text-decoration: none;
         }
-        .social-links a:hover { background: var(--red-primary); color: var(--bg-white); transform: translateY(-3px);}
+
+        .social-links a:hover {
+            background: var(--red-primary);
+            color: var(--bg-white);
+            transform: translateY(-3px);
+        }
 
         /* --- FAB --- */
-        .fab-container { position: fixed; bottom: 40px; right: 40px; z-index: 999; }
-        .fab {
-            width: 60px; height: 60px; background: var(--red-primary); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; color: var(--bg-white); font-size: 24px;
-            text-decoration: none; box-shadow: 0 5px 20px rgba(211, 47, 47, 0.4); transition: transform 0.3s;
+        .fab-container {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 999;
         }
-        .fab:hover { transform: scale(1.1); background: var(--red-hover);}
+
+        .fab {
+            width: 60px;
+            height: 60px;
+            background: var(--red-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-white);
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(211, 47, 47, 0.4);
+            transition: transform 0.3s;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            background: var(--red-hover);
+        }
 
         /* --- ANIMATIONS --- */
-        .anim { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-        .anim.fade-up { transform: translateY(30px); } 
-        .anim.visible { opacity: 1; transform: translate(0); }
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .anim {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .anim.fade-up {
+            transform: translateY(30px);
+        }
+
+        .anim.visible {
+            opacity: 1;
+            transform: translate(0);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
 
         /* ========================================================
            RESPONSIVE MOBILE
            ======================================================== */
         @media (max-width: 900px) {
-            header { padding: 15px 5%; background-color: var(--bg-white);}
-            .logo-img { max-height: 40px; }
-            .menu-toggle { display: block; }
-            .header-btn { display: none; } 
-            
-            nav { position: static; }
-            .nav-list {
-                position: fixed; top: 71px; left: 0; width: 100%; 
-                background-color: var(--bg-white); flex-direction: column; 
-                align-items: center; gap: 0; border-top: 1px solid var(--border-light);
-                border-bottom: 1px solid var(--border-light); max-height: 0; overflow: hidden; 
-                transition: max-height 0.5s ease-in-out; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            header {
+                padding: 15px 5%;
+                background-color: var(--bg-white);
             }
-            .nav-list.nav-active { max-height: 100vh; padding: 10px 0 20px; overflow-y: auto; }
-            .nav-list li { width: 100%; text-align: center; border-bottom: 1px solid var(--border-light); padding: 0; height: auto;}
-            .nav-list li:last-child { border-bottom: none; }
-            .nav-list li > a { display: block; padding: 20px 0; font-size: 1rem; width: 100%; letter-spacing: 2px;}
-            .nav-list li > a::after { display: none; }
-            .mega-menu { display: none !important; }
 
-            .hero { padding-top: 70px; }
-            .hero h1 { font-size: 3rem; letter-spacing: 2px;}
-            .hero p { font-size: 0.9rem; margin-bottom: 2.5rem; letter-spacing: 1px;}
+            .logo-img {
+                max-height: 40px;
+            }
 
-            section { padding: 4rem 5%; }
-            .section-title { font-size: 2.2rem; margin-bottom: 3rem;}
-            
-            .about-container, .pricing-wrapper, .footer-content { grid-template-columns: 1fr; gap: 3rem;}
-            .about-image { order: -1; } 
-            .about-image::after { display: none; }
-            
-            .pricing-box { padding: 2rem 1.5rem; }
-            .testi-card { width: 320px; padding: 2rem 1.5rem; }
+            .menu-toggle {
+                display: block;
+            }
 
-            .gallery-masonry { column-count: 2; }
-            
-            .info-section { grid-template-columns: 1fr; border: none; background: transparent; box-shadow: none;}
-            .info-card { border-right: none; border: 1px solid var(--border-light); margin-bottom: 20px; background: var(--bg-white); border-radius: 8px;}
+            .header-btn {
+                display: none;
+            }
 
-            .fab-container { bottom: 20px; right: 20px; }
-            .fab { width: 55px; height: 55px; font-size: 20px; }
-            .footer-map iframe { height: 220px; }
+            nav {
+                position: static;
+            }
+
+            .nav-links-wrapper {
+                border-bottom: none;
+                margin-right: 0;
+                padding-bottom: 0;
+            }
+
+            .nav-list {
+                position: fixed;
+                top: 71px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-white);
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                border-top: 1px solid var(--border-light);
+                border-bottom: 1px solid var(--border-light);
+                height: auto;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-in-out;
+                z-index: 999;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-list.nav-active {
+                max-height: 500px;
+                padding: 10px 0 20px;
+            }
+
+            .nav-list li {
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid var(--border-light);
+                padding: 0;
+                height: auto !important;
+            }
+
+            .nav-list li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-list li>a {
+                display: block;
+                padding: 20px 0;
+                font-size: 1rem;
+                width: 100%;
+                letter-spacing: 2px;
+            }
+
+            .mega-menu {
+                display: none !important;
+            }
+
+            .hero {
+                padding-top: 110px;
+                padding-bottom: 60px;
+                min-height: auto;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2.5rem;
+            }
+
+            .hero-text-box {
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+                letter-spacing: 2px;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero-img-box img {
+                width: 300px;
+                height: 420px;
+            }
+
+            /* Kích thước cũ là 260x360 */
+
+            section {
+                padding: 4rem 5%;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+                margin-bottom: 3rem;
+            }
+
+            .about-container,
+            .pricing-wrapper,
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .about-image::after {
+                display: none;
+            }
+
+            .pricing-box {
+                padding: 2rem 1.5rem;
+            }
+
+            .testi-card {
+                width: 320px;
+                padding: 2rem 1.5rem;
+            }
+
+            .gallery-masonry {
+                column-count: 2;
+            }
+
+            .info-section {
+                grid-template-columns: 1fr;
+                border: none;
+                background: transparent;
+                box-shadow: none;
+            }
+
+            .info-card {
+                border-right: none;
+                border: 1px solid var(--border-light);
+                margin-bottom: 20px;
+                background: var(--bg-white);
+                border-radius: 8px;
+            }
+
+            .fab-container {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .fab {
+                width: 55px;
+                height: 55px;
+                font-size: 20px;
+            }
+
+            .footer-map iframe {
+                height: 220px;
+            }
         }
 
         @media (max-width: 500px) {
-            .gallery-masonry { column-count: 1; }
+            .gallery-masonry {
+                column-count: 1;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <header id="header">
@@ -332,28 +1174,31 @@
             <img src="logo.png" alt="Fun Nails Logo" class="logo-img">
         </a>
         <nav>
-            <ul class="nav-list" id="nav-list">
-                <li><a href="#home">Startseite</a></li>
-                <li><a href="#ueber-uns">Über uns</a></li>
-                <li class="has-mega-menu">
-                    <a href="#leistungen">Dienstleistungen <i class="fa-solid fa-angle-down" style="font-size: 0.7rem;"></i></a>
-                    <div class="mega-menu">
-                        <a href="#preise" class="mega-item">
-                            <div class="mega-img-box"><img src="11.jpg" alt="Nails"></div>
-                            <span>Nails</span>
-                            <p>Exklusive Maniküre, Pediküre & Design</p>
-                        </a>
-                        <a href="#preise" class="mega-item">
-                            <div class="mega-img-box"><img src="12.jpg" alt="Wimpern"></div>
-                            <span>Wimpern</span>
-                            <p>Premium Lash Extensions & Lifting</p>
-                        </a>
-                    </div>
-                </li>
-                <li><a href="#galerie">Galerie</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
-            </ul>
-            <a href="tel:+4937528389180" class="header-btn">Jetzt anrufen</a>
+            <div class="nav-links-wrapper">
+                <ul class="nav-list" id="nav-list">
+                    <li><a href="#home">Startseite</a></li>
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                    <li class="has-mega-menu">
+                        <a href="#leistungen">Dienstleistungen <i class="fa-solid fa-angle-down"
+                                style="font-size: 0.7rem;"></i></a>
+                        <div class="mega-menu">
+                            <a href="#preise" class="mega-item">
+                                <div class="mega-img-box"><img src="11.jpg" alt="Nails"></div>
+                                <span>Nails</span>
+                                <p>Exklusive Maniküre, Pediküre & Design</p>
+                            </a>
+                            <a href="#preise" class="mega-item">
+                                <div class="mega-img-box"><img src="12.jpg" alt="Wimpern"></div>
+                                <span>Wimpern</span>
+                                <p>Premium Lash Extensions & Lifting</p>
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="#galerie">Galerie</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+            <a href="tel:+4937528389180" class="header-btn">Jetzt beraten</a>
             <div class="menu-toggle" id="mobile-menu"><i class="fa-solid fa-bars"></i></div>
         </nav>
     </header>
@@ -362,11 +1207,21 @@
         <a href="tel:+4937528389180" class="fab"><i class="fa-solid fa-phone"></i></a>
     </div>
 
+    <!-- KHU VỰC HERO ĐƯỢC CHỈNH SỬA ĐỂ CÓ ẢNH VÀ CHỮ GIỐNG BỐ CỤC NC NAILS -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Fun Nails</h1>
-            <p>Premium American Style Nails & Wimpernverlängerung</p>
-            <a href="tel:+4937528389180" class="btn-main">Termin Vereinbaren</a>
+            <!-- Hình ảnh dọc chân dung bo góc -->
+            <div class="hero-img-box">
+                <!-- Hãy thay ảnh này bằng một ảnh chân dung mẫu nối mi/làm nail thật đẹp của tiệm -->
+                <img src="15.jpg" alt="Fun Nails Beauty Model">
+            </div>
+
+            <!-- Phần chữ Logo và Button nằm bên cạnh ảnh -->
+            <div class="hero-text-box">
+                <h1>Fun Nails</h1>
+                <p>Beauty & Lashes</p>
+                <a href="tel:+4937528389180" class="btn-main">Jetzt beraten</a>
+            </div>
         </div>
     </section>
 
@@ -374,8 +1229,12 @@
         <h2 class="section-title anim fade-up">Willkommen</h2>
         <div class="about-container">
             <div class="about-text anim fade-up">
-                <p>Erleben Sie Luxus pur. Bei <strong>Fun Nails</strong> in den Zwickau Arcaden vereinen wir meisterhafte Handwerkskunst mit erstklassigen Produkten, um Ihnen professionelle Nagelpflege und exklusive Wimpernverlängerungen auf höchstem Niveau zu bieten.</p><br>
-                <p>Unser helles und modernes Studioambiente lädt zum Verweilen und Entspannen ein. Mit modernen Massage-Pediküre-Stühlen und höchsten Hygienestandards garantieren wir Ihnen eine vollkommene Auszeit vom Alltag. <strong>Ihre absolute Zufriedenheit</strong> ist unser höchster Anspruch.</p>
+                <p>Erleben Sie Luxus pur. Bei <strong>Fun Nails</strong> in den Zwickau Arcaden vereinen wir
+                    meisterhafte Handwerkskunst mit erstklassigen Produkten, um Ihnen professionelle Nagelpflege und
+                    exklusive Wimpernverlängerungen auf höchstem Niveau zu bieten.</p><br>
+                <p>Unser helles und modernes Studioambiente lädt zum Verweilen und Entspannen ein. Mit modernen
+                    Massage-Pediküre-Stühlen und höchsten Hygienestandards garantieren wir Ihnen eine vollkommene
+                    Auszeit vom Alltag. <strong>Ihre absolute Zufriedenheit</strong> ist unser höchster Anspruch.</p>
             </div>
             <div class="about-image anim fade-up">
                 <img src="1.jpg" alt="Interior Fun Nails">
@@ -412,81 +1271,140 @@
     <section id="preise">
         <h2 class="section-title anim fade-up">Preisliste</h2>
         <div class="pricing-wrapper">
-            
+
             <div class="pricing-box anim fade-up">
                 <h3 class="box-title">Nails (American Style)</h3>
-                
+
                 <div class="pricing-img-wrapper">
                     <img src="14.png" alt="Nails Art">
                 </div>
 
                 <div class="pricing-category">
                     <h4>Pflege</h4>
-                    <div class="price-item"><span class="price-name">Basic Maniküre (Natur)</span><div class="price-dots"></div><span class="price-value">12,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Maniküre incl. Lackieren</span><div class="price-dots"></div><span class="price-value">25,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Pediküre (Natur)</span><div class="price-dots"></div><span class="price-value">25,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Pediküre incl. Lackieren</span><div class="price-dots"></div><span class="price-value">35,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Pediküre mit Shellac / Gelfarbe</span><div class="price-dots"></div><span class="price-value">ab 45,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Basic Maniküre (Natur)</span>
+                        <div class="price-dots"></div><span class="price-value">12,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">Maniküre incl. Lackieren</span>
+                        <div class="price-dots"></div><span class="price-value">25,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">Pediküre (Natur)</span>
+                        <div class="price-dots"></div><span class="price-value">25,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">Pediküre incl. Lackieren</span>
+                        <div class="price-dots"></div><span class="price-value">35,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">Pediküre mit Shellac / Gelfarbe</span>
+                        <div class="price-dots"></div><span class="price-value">ab 45,00 €</span>
+                    </div>
                 </div>
 
                 <div class="pricing-category">
                     <h4>Neumodellage</h4>
-                    <div class="price-item"><span class="price-name">Pulver-Gel</span><div class="price-dots"></div><span class="price-value">35,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Flüssig-Gel</span><div class="price-dots"></div><span class="price-value">35,00 €</span></div>
-                    <div class="price-item"><span class="price-name">French oder Farbe</span><div class="price-dots"></div><span class="price-value">ab 40,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Pulver-Gel</span>
+                        <div class="price-dots"></div><span class="price-value">35,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">Flüssig-Gel</span>
+                        <div class="price-dots"></div><span class="price-value">35,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">French oder Farbe</span>
+                        <div class="price-dots"></div><span class="price-value">ab 40,00 €</span>
+                    </div>
                 </div>
 
                 <div class="pricing-category">
                     <h4>Auffüllen</h4>
-                    <div class="price-item"><span class="price-name">Pulver-Gel</span><div class="price-dots"></div><span class="price-value">30,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Flüssig-Gel</span><div class="price-dots"></div><span class="price-value">30,00 €</span></div>
-                    <div class="price-item"><span class="price-name">French oder Farbe</span><div class="price-dots"></div><span class="price-value">ab 35,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Pulver-Gel</span>
+                        <div class="price-dots"></div><span class="price-value">30,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">Flüssig-Gel</span>
+                        <div class="price-dots"></div><span class="price-value">30,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">French oder Farbe</span>
+                        <div class="price-dots"></div><span class="price-value">ab 35,00 €</span>
+                    </div>
                 </div>
 
                 <div class="pricing-category">
                     <h4>Extras</h4>
-                    <div class="price-item"><span class="price-name">Zehenmodellage (French/Farbgel)</span><div class="price-dots"></div><span class="price-value">ab 39,00 €</span></div>
-                    <div class="price-item"><span class="price-name">French / Farbgel / Gelglitzer</span><div class="price-dots"></div><span class="price-value">je 5,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Airbrush pro Nagel / Komplett</span><div class="price-dots"></div><span class="price-value">3€ / 15€</span></div>
-                    <div class="price-item"><span class="price-name">Strasssteine (1 / 10 Stück)</span><div class="price-dots"></div><span class="price-value">1€ / 5€</span></div>
-                    <div class="price-item"><span class="price-name">Lackieren / Ablösen</span><div class="price-dots"></div><span class="price-value">je 10,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Kürzen + Feilen</span><div class="price-dots"></div><span class="price-value">7,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Nagelreparatur</span><div class="price-dots"></div><span class="price-value">3,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Zehenmodellage (French/Farbgel)</span>
+                        <div class="price-dots"></div><span class="price-value">ab 39,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">French / Farbgel / Gelglitzer</span>
+                        <div class="price-dots"></div><span class="price-value">je 5,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">Airbrush pro Nagel / Komplett</span>
+                        <div class="price-dots"></div><span class="price-value">3€ / 15€</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">Strasssteine (1 / 10 Stück)</span>
+                        <div class="price-dots"></div><span class="price-value">1€ / 5€</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">Lackieren / Ablösen</span>
+                        <div class="price-dots"></div><span class="price-value">je 10,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">Kürzen + Feilen</span>
+                        <div class="price-dots"></div><span class="price-value">7,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">Nagelreparatur</span>
+                        <div class="price-dots"></div><span class="price-value">3,00 €</span>
+                    </div>
                 </div>
             </div>
 
             <div class="pricing-box anim fade-up" style="transition-delay: 0.2s;">
                 <h3 class="box-title">Wimpern & Beauty</h3>
-                
+
                 <div class="pricing-img-wrapper">
                     <img src="13.jpg" alt="Wimpernverlängerung">
                 </div>
 
                 <div class="pricing-category">
                     <h4>Wimpernverlängerung (Neuauflage)</h4>
-                    <div class="price-item"><span class="price-name">1 : 1 (Classic)</span><div class="price-dots"></div><span class="price-value">60,00 €</span></div>
-                    <div class="price-item"><span class="price-name">2D - 3D (Volumentechnik)</span><div class="price-dots"></div><span class="price-value">70,00 €</span></div>
-                    <div class="price-item"><span class="price-name">4D - 7D (Volumentechnik)</span><div class="price-dots"></div><span class="price-value">85,00 €</span></div>
+                    <div class="price-item"><span class="price-name">1 : 1 (Classic)</span>
+                        <div class="price-dots"></div><span class="price-value">60,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">2D - 3D (Volumentechnik)</span>
+                        <div class="price-dots"></div><span class="price-value">70,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">4D - 7D (Volumentechnik)</span>
+                        <div class="price-dots"></div><span class="price-value">85,00 €</span>
+                    </div>
                 </div>
 
                 <div class="pricing-category">
                     <h4>Auffüllen</h4>
-                    <div class="price-item"><span class="price-name">nach 2 Wochen</span><div class="price-dots"></div><span class="price-value">ab 35,00 €</span></div>
-                    <div class="price-item"><span class="price-name">nach 3 Wochen</span><div class="price-dots"></div><span class="price-value">ab 45,00 €</span></div>
-                    <div class="price-item"><span class="price-name">nach 4 Wochen</span><div class="price-dots"></div><span class="price-value">ab 55,00 €</span></div>
+                    <div class="price-item"><span class="price-name">nach 2 Wochen</span>
+                        <div class="price-dots"></div><span class="price-value">ab 35,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">nach 3 Wochen</span>
+                        <div class="price-dots"></div><span class="price-value">ab 45,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">nach 4 Wochen</span>
+                        <div class="price-dots"></div><span class="price-value">ab 55,00 €</span>
+                    </div>
                 </div>
 
                 <div class="pricing-category">
                     <h4>Lifting & Beauty</h4>
-                    <div class="price-item"><span class="price-name">Lashslifting mit Keratin</span><div class="price-dots"></div><span class="price-value">35,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Wimpern färben</span><div class="price-dots"></div><span class="price-value">15,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Augenbrauen färben</span><div class="price-dots"></div><span class="price-value">10,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Augenbrauen waxing</span><div class="price-dots"></div><span class="price-value">10,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Wimpern entfernen</span><div class="price-dots"></div><span class="price-value">25,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Lashslifting mit Keratin</span>
+                        <div class="price-dots"></div><span class="price-value">35,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">Wimpern färben</span>
+                        <div class="price-dots"></div><span class="price-value">15,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">Augenbrauen färben</span>
+                        <div class="price-dots"></div><span class="price-value">10,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">Augenbrauen waxing</span>
+                        <div class="price-dots"></div><span class="price-value">10,00 €</span>
+                    </div>
+                    <div class="price-item"><span class="price-name">Wimpern entfernen</span>
+                        <div class="price-dots"></div><span class="price-value">25,00 €</span>
+                    </div>
                 </div>
-                
+
                 <div class="pricing-note">
-                    Nach 5 Wochen berechnen wir den Neuauflagepreis. Auffüllen aus Fremdstudios nach Prüfung. <strong>Für Wimpern arbeiten wir nur mit Terminen.</strong>
+                    Nach 5 Wochen berechnen wir den Neuauflagepreis. Auffüllen aus Fremdstudios nach Prüfung.
+                    <strong>Für Wimpern arbeiten wir nur mit Terminen.</strong>
                 </div>
             </div>
 
@@ -499,28 +1417,39 @@
             <div class="testi-track">
                 <div class="testi-card">
                     <div>
-                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p class="testi-text">"Ich bin sehr zufrieden. Habe ein Inspo Bild mitgebracht und gesagt was ich gern möchte. Sie hat mehrmals nachgefragt ob es mir so gefällt. Tolles Endergebnis."</p>
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></div>
+                        <p class="testi-text">"Ich bin sehr zufrieden. Habe ein Inspo Bild mitgebracht und gesagt was
+                            ich gern möchte. Sie hat mehrmals nachgefragt ob es mir so gefällt. Tolles Endergebnis."</p>
                     </div>
                     <h4 class="testi-name">Lea</h4>
                 </div>
                 <div class="testi-card">
                     <div>
-                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p class="testi-text">"Ich lasse mir nur zu besonderen Anlässen Nägel machen. Bin sehr zufrieden. Tolle Arbeit. Danke."</p>
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></div>
+                        <p class="testi-text">"Ich lasse mir nur zu besonderen Anlässen Nägel machen. Bin sehr
+                            zufrieden. Tolle Arbeit. Danke."</p>
                     </div>
                     <h4 class="testi-name">Anja Fliegner</h4>
                 </div>
                 <div class="testi-card">
                     <div>
-                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p class="testi-text">"Vielen Dank nochmal für die geduldige Designerin. Das Ergebnis spricht für sich."</p>
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></div>
+                        <p class="testi-text">"Vielen Dank nochmal für die geduldige Designerin. Das Ergebnis spricht
+                            für sich."</p>
                     </div>
                     <h4 class="testi-name">Sabine Lehmann</h4>
                 </div>
                 <div class="testi-card">
                     <div>
-                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></div>
                         <p class="testi-text">"Keine Wartezeiten, Kundenwunsch sehr gut umgesetzt."</p>
                     </div>
                     <h4 class="testi-name">Marika Z</h4>
@@ -528,15 +1457,21 @@
                 <!-- Duplicate -->
                 <div class="testi-card">
                     <div>
-                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p class="testi-text">"Ich bin sehr zufrieden. Habe ein Inspo Bild mitgebracht und gesagt was ich gern möchte. Sie hat mehrmals nachgefragt ob es mir so gefällt. Tolles Endergebnis."</p>
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></div>
+                        <p class="testi-text">"Ich bin sehr zufrieden. Habe ein Inspo Bild mitgebracht und gesagt was
+                            ich gern möchte. Sie hat mehrmals nachgefragt ob es mir so gefällt. Tolles Endergebnis."</p>
                     </div>
                     <h4 class="testi-name">Lea</h4>
                 </div>
                 <div class="testi-card">
                     <div>
-                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p class="testi-text">"Ich lasse mir nur zu besonderen Anlässen Nägel machen. Bin sehr zufrieden. Tolle Arbeit. Danke."</p>
+                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></div>
+                        <p class="testi-text">"Ich lasse mir nur zu besonderen Anlässen Nägel machen. Bin sehr
+                            zufrieden. Tolle Arbeit. Danke."</p>
                     </div>
                     <h4 class="testi-name">Anja Fliegner</h4>
                 </div>
@@ -549,14 +1484,20 @@
         <h2 class="section-title anim fade-up">Galerie</h2>
         <div class="gallery-masonry">
             <div class="gallery-item anim fade-up"><img src="9.jpg" alt="Wimpernverlängerung"></div>
-            <div class="gallery-item anim fade-up" style="transition-delay: 0.1s;"><img src="10.jpg" alt="Wimpern Top View"></div>
-            <div class="gallery-item anim fade-up" style="transition-delay: 0.2s;"><img src="12.jpg" alt="Lashes Face"></div>
-            <div class="gallery-item anim fade-up" style="transition-delay: 0.3s;"><img src="2.jpg" alt="Pediküre Massage Stühle"></div>
-            
+            <div class="gallery-item anim fade-up" style="transition-delay: 0.1s;"><img src="10.jpg"
+                    alt="Wimpern Top View"></div>
+            <div class="gallery-item anim fade-up" style="transition-delay: 0.2s;"><img src="12.jpg" alt="Lashes Face">
+            </div>
+            <div class="gallery-item anim fade-up" style="transition-delay: 0.3s;"><img src="2.jpg"
+                    alt="Pediküre Massage Stühle"></div>
+
             <div class="gallery-item anim fade-up"><img src="11.jpg" alt="Black Pointed Nails"></div>
-            <div class="gallery-item anim fade-up" style="transition-delay: 0.1s;"><img src="6.jpg" alt="Nail Art Design"></div>
-            <div class="gallery-item anim fade-up" style="transition-delay: 0.2s;"><img src="5.jpg" alt="Nail Art mit Strass"></div>
-            <div class="gallery-item anim fade-up" style="transition-delay: 0.3s;"><img src="4.jpg" alt="Buntes Design"></div>
+            <div class="gallery-item anim fade-up" style="transition-delay: 0.1s;"><img src="6.jpg"
+                    alt="Nail Art Design"></div>
+            <div class="gallery-item anim fade-up" style="transition-delay: 0.2s;"><img src="5.jpg"
+                    alt="Nail Art mit Strass"></div>
+            <div class="gallery-item anim fade-up" style="transition-delay: 0.3s;"><img src="4.jpg" alt="Buntes Design">
+            </div>
         </div>
     </section>
 
@@ -588,25 +1529,31 @@
         <div class="footer-logo-container">
             <img src="logo.png" alt="Fun Nails Logo" class="footer-logo">
         </div>
-        
+
         <div class="footer-content">
             <div class="footer-col">
                 <h3>Über Uns</h3>
-                <p><strong>Hotline:</strong> 0375 - 28 38 91 80</p>
-                <p><strong>Email:</strong> haitau30061970@gmail.com</p>
-                <p><strong>Adresse:</strong> Innere Plauensche Str. 14, 08056 Zwickau (Arcaden)</p>
+                <p><strong>Hotline:</strong> <a href="tel:+4937528389180">0375 - 28 38 91 80</a></p>
+                <p><strong>Email:</strong> <a href="mailto:haitau30061970@gmail.com">haitau30061970@gmail.com</a></p>
+                <p><strong>Adresse:</strong> <a
+                        href="https://maps.google.com/?q=Innere+Plauensche+Str.+14,+08056+Zwickau"
+                        target="_blank">Innere Plauensche Str. 14, 08056 Zwickau (Arcaden)</a></p>
                 <br>
                 <p><strong>Montag – Samstag:</strong> 09:00 – 20:00 Uhr</p>
                 <p><strong>Sonn- und Feiertage:</strong> geschlossen</p>
-                
+
                 <div class="social-links">
-                    <a href="https://www.facebook.com/share/14e8R3SHeR4/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/funnails.a?igsh=YTZudnM3cGdxMjBm" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/14e8R3SHeR4/?mibextid=wwXIfr" target="_blank"
+                        title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/funnails.a?igsh=YTZudnM3cGdxMjBm" target="_blank"
+                        title="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
 
             <div class="footer-col footer-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2524.364234057816!2d12.494793615742296!3d50.718804979513364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a7318c502b4d1d%3A0x6b2b78b0e791b8d2!2sInnere%20Plauensche%20Str.%2014%2C%2008056%20Zwickau%2C%20%C4%90%E1%BB%A9c!5e0!3m2!1svi!2s!4v1689844840000!5m2!1svi!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2524.364234057816!2d12.494793615742296!3d50.718804979513364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a7318c502b4d1d%3A0x6b2b78b0e791b8d2!2sInnere%20Plauensche%20Str.%2014%2C%2008056%20Zwickau%2C%20%C4%90%E1%BB%A9c!5e0!3m2!1svi!2s!4v1689844840000!5m2!1svi!2s"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
 
@@ -616,13 +1563,13 @@
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); 
+                        observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
@@ -631,8 +1578,8 @@
 
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) { header.style.padding = '10px 5%'; header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';} 
-                else { header.style.padding = '15px 5%'; header.style.boxShadow = '0 2px 15px rgba(0,0,0,0.05)';}
+                if (window.scrollY > 50) { header.style.padding = '10px 5%'; header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)'; }
+                else { header.style.padding = '12px 5%'; header.style.boxShadow = '0 2px 15px rgba(0,0,0,0.05)'; }
             });
 
             const menuToggle = document.getElementById('mobile-menu');
@@ -640,7 +1587,7 @@
             const navLinks = document.querySelectorAll('.nav-list li a');
             const menuIcon = menuToggle.querySelector('i');
 
-            menuToggle.addEventListener('click', function() {
+            menuToggle.addEventListener('click', function () {
                 navList.classList.toggle('nav-active');
                 if (navList.classList.contains('nav-active')) {
                     menuIcon.classList.remove('fa-bars'); menuIcon.classList.add('fa-xmark');
@@ -650,7 +1597,7 @@
             });
 
             navLinks.forEach(link => {
-                link.addEventListener('click', function() {
+                link.addEventListener('click', function () {
                     if (window.innerWidth <= 900) {
                         navList.classList.remove('nav-active');
                         menuIcon.classList.remove('fa-xmark'); menuIcon.classList.add('fa-bars');
@@ -660,4 +1607,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -3,50 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fun Nails - Zwickau | American Style Nails & Wimpernverlängerung</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <title>Fun Nails - Zwickau | Premium Nails & Wimpernverlängerung</title>
+    <!-- Google Fonts cho sự sang trọng (Playfair Display & Montserrat) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome cho Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- BIẾN MÀU SẮC --- */
+        /* --- TONE MÀU TRẮNG ĐEN (MONOCHROME) THEO NC NAILS --- */
         :root {
-            --primary-red: #C4122D; 
-            --bg-cream: #F5F0E6;   
-            --white: #FFFFFF;
-            --text-dark: #333333;
-            --text-light: #555555;
-            --glow-red: rgba(196, 18, 45, 0.4);
+            --black: #111111; 
+            --white: #FFFFFF;   
+            --bg-gray: #F9F9F9;
+            --border-color: #E0E0E0;
+            --text-light: #777777;
+            --btn-orange: #f1a058; 
             --section-padding: 6rem 5%;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* --- ẨN THANH CUỘN TRIỆT ĐỂ CHO MỌI TRÌNH DUYỆT --- */
-        html, body {
-            -ms-overflow-style: none;  /* Cho Internet Explorer, Edge */
-            scrollbar-width: none;  /* Cho Firefox */
-        }
-        
-        /* Cho Chrome, Safari và Opera */
-        html::-webkit-scrollbar, body::-webkit-scrollbar { 
-            display: none; 
-        }
-        /* --------------------------------------------------- */
-
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-cream);
-            color: var(--text-dark);
-            line-height: 1.7;
+            background-color: var(--bg-gray);
+            color: var(--black);
+            line-height: 1.8;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            -ms-overflow-style: none;  
+            scrollbar-width: none;  
         }
+        body::-webkit-scrollbar { display: none; }
 
-        /* --- HEADER & NAVIGATION --- */
+        /* --- HEADER & MEGA MENU --- */
         header {
-            background-color: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            padding: 15px 5%;
+            background-color: var(--black);
+            padding: 10px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -54,550 +46,655 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             transition: padding 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .logo-link { display: flex; align-items: center; z-index: 1001; }
-        .logo-img { max-height: 55px; width: auto; transition: transform 0.3s ease; }
+        .logo-img { max-height: 50px; width: auto; transition: transform 0.3s ease; object-fit: contain;}
         .logo-link:hover .logo-img { transform: scale(1.05); }
 
-        .menu-toggle {
-            display: none; font-size: 1.8rem; color: var(--primary-red); cursor: pointer; z-index: 1001; 
+        .menu-toggle { display: none; font-size: 1.6rem; color: var(--white); cursor: pointer; z-index: 1001; }
+
+        nav { display: flex; align-items: center; gap: 2rem; height: 100%;}
+        nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; margin: 0; height: 100%;}
+        
+        nav ul li { position: relative; height: 100%; display: flex; align-items: center; padding: 15px 0;}
+        
+        nav ul li > a {
+            text-decoration: none; color: var(--white); font-weight: 600; font-size: 0.8rem;
+            text-transform: uppercase; letter-spacing: 1px; position: relative; transition: color 0.3s;
+            display: flex; align-items: center; gap: 5px; cursor: pointer;
+        }
+        nav ul li > a::after {
+            content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0;
+            background-color: var(--white); transition: width 0.3s ease;
+        }
+        nav ul li > a:hover::after { width: 100%; }
+
+        /* --- MEGA MENU CSS --- */
+        .has-mega-menu:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
-        nav ul { list-style: none; display: flex; gap: 2rem; }
-        nav ul li a {
-            text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.95rem;
-            text-transform: uppercase; letter-spacing: 1px; position: relative; transition: color 0.3s;
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(15px);
+            background-color: var(--white);
+            width: max-content;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            display: flex;
+            gap: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border-top: 3px solid var(--btn-orange);
         }
-        nav ul li a::after {
-            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
-            background-color: var(--primary-red); transition: width 0.3s ease;
+        
+        .mega-menu::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 0 10px 10px 10px;
+            border-style: solid;
+            border-color: transparent transparent var(--btn-orange) transparent;
         }
-        nav ul li a:hover { color: var(--primary-red); }
-        nav ul li a:hover::after { width: 100%; }
+
+        .mega-item {
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        .mega-item:hover { transform: translateY(-5px); }
+
+        .mega-img-box {
+            width: 100%;
+            height: 120px;
+            overflow: hidden;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .mega-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .mega-item:hover .mega-img-box img { transform: scale(1.1); }
+
+        .mega-item span {
+            color: var(--black);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .mega-item p {
+            color: var(--text-light);
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: 5px;
+            font-weight: 300;
+        }
+
+        /* Nút phụ trên Header */
+        .header-btn {
+            background-color: var(--btn-orange);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: background 0.3s;
+        }
+        .header-btn:hover { background-color: #e08e45; color: var(--white);}
 
         /* --- GLOBAL TITLES --- */
         section { padding: var(--section-padding); }
         .section-title {
             text-align: center; font-family: 'Playfair Display', serif; font-size: 2.8rem;
-            color: var(--primary-red); margin-bottom: 3.5rem; position: relative;
+            color: var(--black); margin-bottom: 4rem; font-weight: 400; letter-spacing: 1px;
         }
         .section-title::after {
-            content: ''; display: block; width: 80px; height: 3px; background-color: var(--primary-red);
-            margin: 15px auto 0; border-radius: 2px;
+            content: ''; display: block; width: 50px; height: 1px; background-color: var(--black);
+            margin: 20px auto 0;
         }
 
         /* --- HERO SECTION --- */
         .hero {
             position: relative; height: 100vh; display: flex; align-items: center; justify-content: center;
-            text-align: center; overflow: hidden; padding-top: 80px;
+            text-align: center; padding-top: 60px;
         }
-        
         .hero::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to right, rgba(245, 240, 230, 0.92), rgba(245, 240, 230, 0.7)), url('8.jpg') center/cover;
-            z-index: -1; animation: bgZoom 15s infinite alternate ease-in-out;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('11.jpg') center/cover;
+            z-index: -1; animation: bgZoom 20s infinite alternate ease-in-out;
         }
-
-        @keyframes bgZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
+        @keyframes bgZoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
 
         .hero-content { z-index: 1; max-width: 800px; padding: 0 20px; }
         .hero h1 {
-            font-family: 'Playfair Display', serif; font-size: 4.5rem; color: var(--primary-red);
-            margin-bottom: 1.5rem; line-height: 1.2; text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
-            animation: fadeInDown 1.2s ease forwards;
+            font-family: 'Playfair Display', serif; font-size: 4.5rem; color: var(--white);
+            margin-bottom: 1rem; line-height: 1.2; font-weight: 400; letter-spacing: 3px;
+            animation: fadeInDown 1s ease forwards;
         }
         .hero p {
-            font-size: 1.3rem; margin-bottom: 2.5rem; color: var(--text-dark); font-weight: 500;
-            animation: fadeInUp 1.2s ease 0.4s forwards; opacity: 0;
+            font-size: 1.1rem; margin-bottom: 3rem; color: rgba(255,255,255,0.9); font-weight: 300; letter-spacing: 2px;
+            animation: fadeInUp 1s ease 0.3s forwards; opacity: 0; text-transform: uppercase;
         }
-
-        .btn {
-            display: inline-block; padding: 16px 40px; background-color: var(--primary-red); color: var(--white);
-            text-decoration: none; border-radius: 50px; font-weight: 600; letter-spacing: 1.5px;
-            text-transform: uppercase; transition: all 0.4s ease; border: 2px solid var(--primary-red);
-            box-shadow: 0 10px 20px var(--glow-red); animation: fadeIn 1s ease 1s forwards; opacity: 0;
-            position: relative; overflow: hidden;
+        .btn-main {
+            display: inline-block; padding: 15px 40px; background-color: var(--btn-orange); color: var(--white);
+            text-decoration: none; border-radius: 5px; font-weight: 600; letter-spacing: 2px;
+            text-transform: uppercase; transition: all 0.4s ease; animation: fadeIn 1s ease 0.6s forwards; opacity: 0;
+            font-size: 0.9rem; border: 1px solid var(--btn-orange);
         }
-        .btn::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: all 0.6s ease;
-        }
-        .btn:hover::before { left: 100%; }
-        .btn:hover { background-color: transparent; color: var(--primary-red); transform: translateY(-5px); box-shadow: 0 15px 25px var(--glow-red); }
+        .btn-main:hover { background-color: transparent; color: var(--btn-orange); }
 
         /* --- ABOUT US --- */
+        #ueber-uns { background-color: var(--white); }
         .about-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1100px; margin: 0 auto; }
-        .about-text { font-size: 1.15rem; color: var(--text-light); text-align: justify; }
-        .about-text strong { color: var(--primary-red); }
-        .about-image { position: relative; }
-        .about-image img { width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); transition: transform 0.5s; object-fit: cover; }
-        .about-image:hover img { transform: translateY(-10px); }
+        .about-text { font-size: 1.05rem; color: var(--text-light); text-align: justify; font-weight: 300; }
+        .about-text strong { color: var(--black); font-weight: 500; }
+        .about-image img { width: 100%; border: 1px solid var(--border-color); filter: grayscale(20%); padding: 10px; transition: transform 0.5s; object-fit: cover; }
+
+        /* --- SERVICES CARDS --- */
+        #leistungen { background-color: var(--bg-gray); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .service-card { background: var(--white); padding: 4rem 2rem; text-align: center; border: 1px solid var(--border-color); transition: all 0.4s ease; }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); border-color: var(--black); }
+        .service-card i { font-size: 2.5rem; color: var(--black); margin-bottom: 2rem; transition: transform 0.4s; }
+        .service-card:hover i { transform: scale(1.1); }
+        .service-card h3 { color: var(--black); margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; }
+        .service-card p { font-weight: 300; font-size: 0.95rem; color: var(--text-light); }
+
+        /* --- PRICING (Menu Style) --- */
+        #preise { background-color: var(--white); }
+        .pricing-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 4rem; max-width: 1200px; margin: 0 auto; }
         
-        .about-image::after {
-            content: ''; position: absolute; bottom: -20px; right: -20px; width: 100px; height: 100px;
-            background-image: radial-gradient(var(--primary-red) 2px, transparent 2px);
-            background-size: 15px 15px; z-index: -1; border-radius: 10px;
-        }
+        .pricing-box h3.box-title { text-align: center; color: var(--black); font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 2rem; font-weight: 400; border-bottom: 1px solid var(--black); padding-bottom: 1rem; display: inline-block; width: 100%;}
+        
+        .pricing-img-wrapper { overflow: hidden; border-radius: 5px; margin-bottom: 2.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .pricing-img-wrapper img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.5s ease; display: block; filter: grayscale(10%);}
+        .pricing-img-wrapper:hover img { transform: scale(1.05); filter: grayscale(0%);}
 
-        /* --- SERVICES --- */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto; }
-        .service-card {
-            background: var(--white); padding: 3rem 2rem; border-radius: 15px; text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.4s ease; border-bottom: 4px solid transparent;
-        }
-        .service-card:hover { transform: translateY(-15px); border-bottom: 4px solid var(--primary-red); box-shadow: 0 15px 40px rgba(196, 18, 45, 0.1); }
-        .service-card i { font-size: 3rem; color: var(--primary-red); margin-bottom: 1.5rem; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .service-card:hover i { transform: scale(1.2) rotate(5deg); }
-        .service-card h3 { color: var(--text-dark); margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-size: 1.5rem; }
+        .pricing-category { margin-bottom: 3rem; }
+        .pricing-category h4 { color: var(--text-light); font-size: 0.85rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 500; text-align: center;}
+        
+        .price-item { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.8rem; }
+        .price-name { font-weight: 400; color: var(--black); font-size: 1rem; padding-right: 10px; background: var(--white); z-index: 1;}
+        .price-dots { flex-grow: 1; border-bottom: 1px dotted var(--border-color); margin: 0 5px; position: relative; top: -5px; z-index: 0;}
+        .price-value { font-weight: 600; color: var(--black); white-space: nowrap; font-size: 1.05rem; padding-left: 10px; background: var(--white); z-index: 1;}
+        .pricing-note { margin-top: 2rem; text-align: center; font-size: 0.85rem; color: var(--text-light); font-style: italic; font-weight: 300; border-top: 1px solid var(--border-color); padding-top: 1rem;}
 
-        /* --- PRICING --- */
-        .pricing-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto; }
-        .pricing-box { background: var(--white); padding: 3rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); position: relative; overflow: hidden; }
-        .pricing-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--primary-red); }
-        .pricing-box h3.box-title { text-align: center; color: var(--primary-red); font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 2rem; }
-        .pricing-category { margin-bottom: 2rem; }
-        .pricing-category h4 { color: var(--text-dark); font-size: 1.1rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #eee; padding-bottom: 5px; display: inline-block; }
-        .price-item { display: flex; justify-content: space-between; align-items: flex-end; padding: 0.6rem 0; border-bottom: 1px dashed #ddd; transition: background 0.3s; }
-        .price-item:hover { background-color: #fcf8f8; padding-left: 10px; padding-right: 10px; border-radius: 5px; border-bottom: 1px dashed transparent; }
-        .price-name { font-weight: 500; color: var(--text-light); flex: 1; padding-right: 15px; }
-        .price-value { font-weight: 700; color: var(--primary-red); white-space: nowrap; font-size: 1.1rem; }
-        .pricing-note { margin-top: 2rem; padding: 1.5rem; background-color: #fff9f9; border-left: 4px solid var(--primary-red); border-radius: 0 8px 8px 0; font-size: 0.95rem; color: var(--text-light); font-style: italic; }
-
-        /* --- TESTIMONIALS (SLIDER CHẠY LIÊN TỤC) --- */
-        .testimonials { 
-            background-color: var(--primary-red); 
-            color: var(--white); 
-            text-align: center; 
-            overflow: hidden; 
-            padding-bottom: 4rem;
-        }
+        /* --- TESTIMONIALS SLIDER --- */
+        .testimonials { background-color: var(--black); text-align: center; overflow: hidden; padding-bottom: 5rem; border-top: 1px solid var(--black); border-bottom: 1px solid var(--black);}
         .testimonials .section-title { color: var(--white); }
         .testimonials .section-title::after { background-color: var(--white); }
-        
-        .testi-slider-container {
-            width: 100%;
-            overflow: hidden;
-            padding: 1rem 0;
-            position: relative;
-        }
-        
-        .testi-track {
-            display: flex;
-            gap: 2rem;
-            width: max-content;
-            animation: scroll-left 35s linear infinite;
-        }
-        
-        .testi-track:hover {
-            animation-play-state: paused;
-        }
-
+        .testi-slider-container { width: 100%; overflow: hidden; padding: 1rem 0; position: relative; }
+        .testi-track { display: flex; gap: 2rem; width: max-content; animation: scroll-left 40s linear infinite; }
+        .testi-track:hover { animation-play-state: paused; }
         .testi-card { 
-            background: rgba(255,255,255,0.1); 
-            padding: 2.5rem; 
-            border-radius: 15px; 
-            backdrop-filter: blur(5px); 
-            border: 1px solid rgba(255,255,255,0.2); 
-            transition: background 0.3s;
-            width: 400px; 
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-align: left;
+            background: rgba(255,255,255,0.05); padding: 3rem; border: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;
+            width: 450px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: space-between; text-align: center;
         }
-        .testi-card:hover { background: rgba(255,255,255,0.15); }
-        .stars { color: #FFD700; margin-bottom: 15px; font-size: 1.2rem; }
-        .testi-text { font-style: italic; margin-bottom: 20px; font-size: 1.05rem; }
-        .testi-name { font-weight: 700; font-family: 'Playfair Display', serif; font-size: 1.2rem; }
+        .testi-card:hover { background: rgba(255,255,255,0.1); }
+        .stars { color: var(--white); margin-bottom: 20px; font-size: 0.9rem; letter-spacing: 5px;}
+        .testi-text { font-style: italic; font-weight: 300; margin-bottom: 25px; font-size: 1.05rem; color: #E0E0E0; font-family: 'Playfair Display', serif;}
+        .testi-name { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--white);}
 
-        @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-50% - 1rem)); }
-        }
+        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 1rem)); } }
 
         /* --- GALLERY --- */
-        .gallery-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .gallery-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 800px; margin: 0 auto; }
-        .gallery-item { position: relative; overflow: hidden; border-radius: 15px; height: 300px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); cursor: crosshair; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        .gallery-item:hover img { transform: scale(1.15); }
-        .gallery-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(196, 18, 45, 0.6); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s ease; }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
-        .gallery-overlay i { color: white; font-size: 2rem; transform: translateY(20px); transition: transform 0.4s ease; }
-        .gallery-item:hover .gallery-overlay i { transform: translateY(0); }
+        #galerie { background-color: var(--bg-gray); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; max-width: 1200px; margin: 0 auto 3rem; }
+        .gallery-item { position: relative; overflow: hidden; height: 350px; cursor: pointer; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; filter: grayscale(15%);}
+        .gallery-item:hover img { transform: scale(1.05); filter: grayscale(0%);}
 
         /* --- INFO / KONTAKT --- */
-        .info-section { background-color: transparent; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
-        .info-card { background-color: var(--white); padding: 3rem 2rem; border-radius: 15px; text-align: center; transition: all 0.4s ease; }
-        .info-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(196, 18, 45, 0.1); }
-        .info-card i { font-size: 3rem; color: var(--primary-red); margin-bottom: 1.5rem; }
-        .info-card h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 1rem; color: var(--primary-red); }
-        .info-card p, .info-card a { color: var(--text-dark); text-decoration: none; font-size: 1.15rem; font-weight: 500; }
-        .info-card a:hover { color: var(--primary-red); text-decoration: underline; }
+        .info-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0; max-width: 1200px; margin: 0 auto; border: 1px solid var(--border-color); }
+        .info-card { background-color: var(--white); padding: 4rem 2rem; text-align: center; border-right: 1px solid var(--border-color); transition: all 0.4s ease; }
+        .info-card:last-child { border-right: none; }
+        .info-card:hover { background-color: var(--black); color: var(--white); }
+        .info-card i { font-size: 2rem; color: var(--black); margin-bottom: 1.5rem; transition: color 0.4s; }
+        .info-card:hover i { color: var(--white); }
+        .info-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 400; transition: color 0.4s;}
+        .info-card p, .info-card a { color: var(--text-light); text-decoration: none; font-size: 0.95rem; font-weight: 300; transition: color 0.4s;}
+        .info-card:hover p, .info-card:hover a { color: #CCCCCC; }
 
-        /* --- FOOTER --- */
-        footer { background-color: #1a1a1a; color: var(--white); text-align: center; padding: 4rem 5% 2rem; }
-        .footer-logo { max-width: 150px; margin-bottom: 20px; object-fit: contain; }
-        .social-links { margin-bottom: 2rem; }
-        .social-links a {
-            display: inline-flex; justify-content: center; align-items: center; width: 45px; height: 45px;
-            background-color: rgba(255,255,255,0.1); color: var(--white); border-radius: 50%;
-            font-size: 1.2rem; margin: 0 10px; transition: all 0.3s ease;
-        }
-        .social-links a:hover { background-color: var(--primary-red); transform: translateY(-5px); }
-        footer p { color: #888; font-size: 0.9rem; margin-top: 2rem; border-top: 1px solid #333; padding-top: 2rem; }
-
-        /* --- FLOATING ACTION BUTTON (FAB) --- */
-        .fab-container { position: fixed; bottom: 30px; right: 30px; z-index: 999; }
-        .fab {
-            width: 65px; height: 65px; background: var(--primary-red); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; color: white; font-size: 28px;
-            text-decoration: none; box-shadow: 0 4px 15px rgba(196,18,45,0.4); animation: pulse-ring 2s infinite;
-            transition: transform 0.3s;
-        }
-        .fab:hover { transform: scale(1.1); }
-        @keyframes pulse-ring {
-            0% { box-shadow: 0 0 0 0 rgba(196,18,45,0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(196,18,45,0); }
-            100% { box-shadow: 0 0 0 0 rgba(196,18,45,0); }
-        }
-
-        /* --- BỘ ANIMATIONS CHUẨN SCROLL --- */
-        .anim { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-        .anim.fade-up { transform: translateY(20px); } 
-        .anim.slide-left { transform: translateX(-30px); } 
-        .anim.slide-right { transform: translateX(30px); } 
-        .anim.zoom-in { transform: scale(0.95); } 
-        .anim.visible { opacity: 1; transform: translate(0) scale(1); }
-
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* --- RESPONSIVE & MOBILE MENU --- */
-        @media (max-width: 900px) {
-            .menu-toggle { display: block; }
-            nav ul {
-                position: absolute; top: 100%; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px); flex-direction: column; align-items: center; gap: 0;
-                box-shadow: 0 10px 15px rgba(0,0,0,0.1); max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out;
-            }
-            nav ul.nav-active { max-height: 500px; }
-            nav ul li { width: 100%; text-align: center; }
-            nav ul li a { display: block; padding: 1.5rem 0; border-bottom: 1px solid #f0f0f0; }
-            nav ul li a::after { display: none; }
-
-            .hero h1 { font-size: 3.2rem; }
-            .about-container { grid-template-columns: 1fr; gap: 2rem; }
-            .about-image { order: -1; }
-            .pricing-wrapper { grid-template-columns: 1fr; }
-            .section-title { font-size: 2.2rem; }
-            
-            .testi-card { width: 300px; padding: 2rem; }
-            
-            .gallery-grid-2 { grid-template-columns: repeat(2, 1fr); }
-            
-            .fab-container { bottom: 20px; right: 20px; }
-            .fab { width: 55px; height: 55px; font-size: 24px; }
+        /* --- FOOTER MỚI --- */
+        footer { 
+            background: linear-gradient(rgba(17, 17, 17, 0.95), rgba(17, 17, 17, 0.95)), url('https://statics.pancake.vn/web-media/11/e4/5a/e7/9b6319751f2821249a6d91a783ffbbe5fbaeda47769497654372283d-w:3450-h:1806-l:7358562-t:image/png.png') center/cover; 
+            color: var(--white); 
+            padding: 5rem 5% 2rem; 
         }
         
-        @media (max-width: 600px) {
-            .gallery-grid-4, .gallery-grid-2 { grid-template-columns: 1fr; }
+        .footer-logo-container { text-align: center; margin-bottom: 3rem; }
+        .footer-logo { max-width: 150px; object-fit: contain; }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .footer-col h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .footer-col p {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+            color: #E0E0E0;
+            line-height: 1.6;
+        }
+        .footer-col p strong { font-weight: 600; color: var(--white); }
+
+        .footer-map iframe {
+            width: 100%;
+            height: 250px;
+            border: 2px solid #333;
+            border-radius: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            font-size: 0.8rem;
+            color: #888;
+            font-weight: 300;
+        }
+
+        .social-links { margin-top: 1.5rem; display: flex; gap: 10px;}
+        .social-links a {
+            display: inline-flex; justify-content: center; align-items: center; width: 40px; height: 40px;
+            background-color: rgba(255,255,255,0.1); color: var(--white); border-radius: 5px;
+            font-size: 1.2rem; transition: all 0.3s ease; text-decoration: none;
+        }
+        .social-links a:hover { background-color: var(--btn-orange); color: var(--white); }
+
+        /* --- FAB --- */
+        .fab-container { position: fixed; bottom: 30px; right: 30px; z-index: 999; }
+        .fab {
+            width: 60px; height: 60px; background: var(--btn-orange); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;
+            text-decoration: none; box-shadow: 0 5px 15px rgba(241, 160, 88, 0.4); transition: transform 0.3s;
+        }
+        .fab:hover { transform: scale(1.1); }
+
+        /* --- ANIMATIONS --- */
+        .anim { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .anim.fade-up { transform: translateY(30px); } 
+        .anim.visible { opacity: 1; transform: translate(0); }
+
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .menu-toggle { display: block; }
+            .header-btn { display: none; } 
+            
+            nav ul {
+                position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--black);
+                flex-direction: column; align-items: center; gap: 0; border-top: 1px solid #333;
+                max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+            }
+            nav ul.nav-active { max-height: 600px; padding: 10px 0;}
+            nav ul li { width: 100%; text-align: center; border-bottom: 1px solid #222; padding: 0;}
+            nav ul li > a { display: block; padding: 1.5rem 0; font-size: 0.9rem; width: 100%;}
+            nav ul li > a::after { display: none; }
+            
+            .mega-menu { display: none !important; }
+
+            .hero h1 { font-size: 3rem; }
+            .about-container, .pricing-wrapper, .footer-content { grid-template-columns: 1fr; gap: 3rem;}
+            .about-image { order: -1; }
+            .testi-card { width: 320px; padding: 2rem; }
+            .info-section { grid-template-columns: 1fr; border: none; }
+            .info-card { border-right: none; border: 1px solid var(--border-color); margin-bottom: 15px;}
+            .fab-container { bottom: 20px; right: 20px; }
+            .fab { width: 50px; height: 50px; font-size: 18px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Header Mega Menu -->
     <header id="header">
         <a href="#home" class="logo-link">
-            <img src="logo.png" alt="FUN NAILS American Style Logo" class="logo-img">
+            <img src="logo.png" alt="Fun Nails Logo" class="logo-img">
         </a>
-        
         <nav>
-            <div class="menu-toggle" id="mobile-menu">
-                <i class="fa-solid fa-bars"></i>
-            </div>
             <ul class="nav-list" id="nav-list">
                 <li><a href="#home">Startseite</a></li>
                 <li><a href="#ueber-uns">Über uns</a></li>
-                <li><a href="#leistungen">Leistungen</a></li>
-                <li><a href="#preise">Preise</a></li>
+                
+                <li class="has-mega-menu">
+                    <a href="#leistungen">Dienstleistungen <i class="fa-solid fa-angle-down" style="font-size: 0.7rem;"></i></a>
+                    
+                    <div class="mega-menu">
+                        <a href="#preise" class="mega-item">
+                            <div class="mega-img-box">
+                                <img src="11.jpg" alt="Nails">
+                            </div>
+                            <span>Nails</span>
+                            <p>Maniküre, Pediküre, Gel & Acryl System</p>
+                        </a>
+                        
+                        <a href="#preise" class="mega-item">
+                            <div class="mega-img-box">
+                                <img src="12.jpg" alt="Wimpern">
+                            </div>
+                            <span>Wimpern</span>
+                            <p>Classic 1:1, Volumentechnik, Lashlifting</p>
+                        </a>
+                    </div>
+                </li>
+                
                 <li><a href="#galerie">Galerie</a></li>
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
+            <a href="#kontakt" class="header-btn">Jetzt beraten</a>
+            <div class="menu-toggle" id="mobile-menu"><i class="fa-solid fa-bars"></i></div>
         </nav>
     </header>
 
     <div class="fab-container">
-        <a href="tel:+4937528389180" class="fab" title="Jetzt anrufen!">
-            <i class="fa-solid fa-phone"></i>
-        </a>
+        <a href="tel:+4937528389180" class="fab"><i class="fa-solid fa-phone"></i></a>
     </div>
 
+    <!-- Hero -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Willkommen bei Fun Nails</h1>
-            <p>Lassen Sie sich verwöhnen! Professionelle Nagelpflege und exklusive Wimpernverlängerungen in Zwickau.</p>
-            <a href="#kontakt" class="btn">Termin vereinbaren</a>
+            <h1>Fun Nails</h1>
+            <p>American Style Nails & Wimpernverlängerung</p>
+            <a href="#kontakt" class="btn-main">Jetzt beraten</a>
         </div>
     </section>
 
+    <!-- Über uns -->
     <section id="ueber-uns">
-        <h2 class="section-title anim fade-up">Herzlich Willkommen</h2>
+        <h2 class="section-title anim fade-up">Willkommen</h2>
         <div class="about-container">
-            <div class="about-text anim slide-left">
-                <p>Treten Sie ein in eine Welt der Entspannung und Schönheit. Bei <strong>Fun Nails</strong> in den Zwickau Arcaden bieten wir Ihnen professionelle Nagelpflege und exklusive Wimpernverlängerungen auf höchstem Niveau.</p>
-                <br>
-                <p>Unser modern eingerichtetes Studio lädt zum Wohlfühlen ein. Mit komfortablen Massage-Pediküre-Stühlen und hellen, hygienischen Arbeitsplätzen garantieren wir Ihnen eine entspannte Auszeit vom Alltag. Unser erfahrenes Team verwendet nur hochwertige Produkte, um Ihre Nägel und Wimpern gesund zu erhalten und sie nach Ihren individuellen Wünschen zu gestalten. <strong>Ihre Zufriedenheit und Hygiene</strong> stehen für uns stets an erster Stelle.</p>
+            <div class="about-text anim fade-up">
+                <p>Treten Sie ein in eine Welt der Entspannung und Schönheit. Bei <strong>Fun Nails</strong> in den Zwickau Arcaden bieten wir Ihnen professionelle Nagelpflege und exklusive Wimpernverlängerungen auf höchstem Niveau.</p><br>
+                <p>Unser minimalistisch und modern eingerichtetes Studio lädt zum Wohlfühlen ein. Mit komfortablen Massage-Pediküre-Stühlen und hellen, hygienischen Arbeitsplätzen garantieren wir Ihnen eine entspannte Auszeit. <strong>Ihre Zufriedenheit und Hygiene</strong> stehen für uns stets an erster Stelle.</p>
             </div>
-            <div class="about-image anim slide-right">
-                <img src="1.jpg" alt="Innenraum Fun Nails - Arbeitsplätze">
+            <div class="about-image anim fade-up">
+                <img src="1.jpg" alt="Interior Fun Nails">
             </div>
         </div>
     </section>
 
-    <section id="leistungen" style="background-color: var(--white);">
-        <h2 class="section-title anim fade-up">Unsere Leistungen</h2>
+    <!-- Leistungen -->
+    <section id="leistungen">
+        <h2 class="section-title anim fade-up">Dienstleistungen</h2>
         <div class="services-grid">
             <div class="service-card anim fade-up">
                 <i class="fa-solid fa-hand-sparkles"></i>
                 <h3>Maniküre & Pediküre</h3>
-                <p>Klassische Pflege für zarte Hände und ein leichtes, schönes Laufgefühl mit unseren Spa-Stühlen.</p>
+                <p>Klassische Pflege für zarte Hände und Füße.</p>
             </div>
             <div class="service-card anim fade-up" style="transition-delay: 0.1s;">
                 <i class="fa-solid fa-gem"></i>
-                <h3>Gel & Acryl Modellage</h3>
-                <p>Professionelle Naturnagelverstärkung, Neumodellage und Verlängerung im American Style.</p>
+                <h3>Gel & Acryl</h3>
+                <p>Professionelle Naturnagelverstärkung im American Style.</p>
             </div>
             <div class="service-card anim fade-up" style="transition-delay: 0.2s;">
                 <i class="fa-solid fa-eye"></i>
-                <h3>Wimpernverlängerung</h3>
-                <p>Von natürlichem Classic (1:1) bis hin zur glamourösen 7D Volumentechnik für den perfekten Blick.</p>
+                <h3>Wimpern</h3>
+                <p>Von Classic (1:1) bis zur glamourösen 7D Volumentechnik.</p>
             </div>
             <div class="service-card anim fade-up" style="transition-delay: 0.3s;">
                 <i class="fa-solid fa-palette"></i>
-                <h3>Extras & Styling</h3>
-                <p>Airbrush, Strasssteine, Lashlifting mit Keratin, Augenbrauenstyling und kreatives Nageldesign.</p>
+                <h3>Extras</h3>
+                <p>Lashlifting, Augenbrauenstyling und kreatives Nailart.</p>
             </div>
         </div>
     </section>
 
+    <!-- Preisliste -->
     <section id="preise">
         <h2 class="section-title anim fade-up">Preisliste</h2>
         <div class="pricing-wrapper">
             
-            <div class="pricing-box anim zoom-in">
-                <h3 class="box-title">Nails - American Style</h3>
-                <div class="pricing-category">
-                    <h4>Basic Maniküre & Pediküre</h4>
-                    <div class="price-item"><span class="price-name">Basic Maniküre (Natur)</span><span class="price-value">12,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Maniküre incl. Lackieren</span><span class="price-value">25,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Pediküre (Natur)</span><span class="price-value">25,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Pediküre incl. Lackieren</span><span class="price-value">35,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Pediküre komplett mit Shellac oder Gelfarbe</span><span class="price-value">ab 45,00 €</span></div>
+            <div class="pricing-box anim fade-up">
+                <h3 class="box-title">Nails (American Style)</h3>
+                
+                <!-- Hình ảnh Móng online như yêu cầu -->
+                <div class="pricing-img-wrapper">
+                    <img src="14.png" alt="Nails Art">
                 </div>
-                <div class="pricing-category">
-                    <h4>Neumodellage mit:</h4>
-                    <div class="price-item"><span class="price-name">Pulver-Gel</span><span class="price-value">35,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Flüssig-Gel</span><span class="price-value">35,00 €</span></div>
-                    <div class="price-item"><span class="price-name">French oder Farbe</span><span class="price-value">ab 40,00 €</span></div>
-                </div>
-                <div class="pricing-category">
-                    <h4>Auffüllen mit:</h4>
-                    <div class="price-item"><span class="price-name">Pulver-Gel</span><span class="price-value">30,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Flüssig-Gel</span><span class="price-value">30,00 €</span></div>
-                    <div class="price-item"><span class="price-name">French oder Farbe</span><span class="price-value">ab 35,00 €</span></div>
-                </div>
-                <div class="pricing-category">
-                    <h4>Zehenmodellage mit:</h4>
-                    <div class="price-item"><span class="price-name">French oder Farbgel</span><span class="price-value">ab 39,00 €</span></div>
-                </div>
-                <div class="pricing-category">
-                    <h4>Extras & Design</h4>
-                    <div class="price-item"><span class="price-name">French / Farbgel / Gelglitzer</span><span class="price-value">je 5,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Airbrush-Hand Design pro Nagel</span><span class="price-value">3,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Airbrush-Hand Design komplett</span><span class="price-value">15,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Strassstein</span><span class="price-value">1,00 €</span></div>
-                    <div class="price-item"><span class="price-name">10 Strasssteine</span><span class="price-value">5,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Nagelpiercing</span><span class="price-value">5,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Lackieren</span><span class="price-value">10,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Kürzen + Feilen</span><span class="price-value">7,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Nagelreparatur</span><span class="price-value">3,00 €</span></div>
-                    <div class="price-item"><span class="price-name">Ablösen</span><span class="price-value">10,00 €</span></div>
-                </div>
-                <div class="pricing-note"><i class="fa-solid fa-circle-info"></i> Wir arbeiten auch ohne Anmeldung. Sie werden vom nächsten freien Mitarbeiter bedient.</div>
-            </div>
 
-            <div class="pricing-box anim zoom-in" style="transition-delay: 0.2s;">
-                <h3 class="box-title">Wimpernverlängerung</h3>
                 <div class="pricing-category">
-                    <h4>Neuauflage</h4>
-                    <div class="price-item"><span class="price-name">- 1 : 1 (Classic)</span><span class="price-value">60,00 €</span></div>
-                    <div class="price-item"><span class="price-name">- 2D - 3D (Volumentechnik)</span><span class="price-value">70,00 €</span></div>
-                    <div class="price-item"><span class="price-name">- 4D - 7D (Volumentechnik)</span><span class="price-value">85,00 €</span></div>
+                    <h4>Pflege</h4>
+                    <div class="price-item"><span class="price-name">Basic Maniküre (Natur)</span><div class="price-dots"></div><span class="price-value">12,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Maniküre incl. Lackieren</span><div class="price-dots"></div><span class="price-value">25,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Pediküre (Natur)</span><div class="price-dots"></div><span class="price-value">25,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Pediküre incl. Lackieren</span><div class="price-dots"></div><span class="price-value">35,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Pediküre mit Shellac / Gelfarbe</span><div class="price-dots"></div><span class="price-value">ab 45,00 €</span></div>
                 </div>
+
+                <div class="pricing-category">
+                    <h4>Neumodellage</h4>
+                    <div class="price-item"><span class="price-name">Pulver-Gel</span><div class="price-dots"></div><span class="price-value">35,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Flüssig-Gel</span><div class="price-dots"></div><span class="price-value">35,00 €</span></div>
+                    <div class="price-item"><span class="price-name">French oder Farbe</span><div class="price-dots"></div><span class="price-value">ab 40,00 €</span></div>
+                </div>
+
                 <div class="pricing-category">
                     <h4>Auffüllen</h4>
-                    <div class="price-item"><span class="price-name">- nach 2 Wochen</span><span class="price-value">ab 35,00 €</span></div>
-                    <div class="price-item"><span class="price-name">- nach 3 Wochen</span><span class="price-value">ab 45,00 €</span></div>
-                    <div class="price-item"><span class="price-name">- nach 4 Wochen</span><span class="price-value">ab 55,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Pulver-Gel</span><div class="price-dots"></div><span class="price-value">30,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Flüssig-Gel</span><div class="price-dots"></div><span class="price-value">30,00 €</span></div>
+                    <div class="price-item"><span class="price-name">French oder Farbe</span><div class="price-dots"></div><span class="price-value">ab 35,00 €</span></div>
                 </div>
+
                 <div class="pricing-category">
-                    <h4>Wimpernlifting & Beauty</h4>
-                    <div class="price-item"><span class="price-name">- Lashslifting mit Keratin</span><span class="price-value">35,00 €</span></div>
-                    <div class="price-item"><span class="price-name">- Wimpern färben</span><span class="price-value">15,00 €</span></div>
-                    <div class="price-item"><span class="price-name">- Augenbrauen färben</span><span class="price-value">10,00 €</span></div>
-                    <div class="price-item"><span class="price-name">- Augenbrauen waxing</span><span class="price-value">10,00 €</span></div>
+                    <h4>Extras</h4>
+                    <div class="price-item"><span class="price-name">Zehenmodellage (French/Farbgel)</span><div class="price-dots"></div><span class="price-value">ab 39,00 €</span></div>
+                    <div class="price-item"><span class="price-name">French / Farbgel / Gelglitzer</span><div class="price-dots"></div><span class="price-value">je 5,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Airbrush pro Nagel / Komplett</span><div class="price-dots"></div><span class="price-value">3€ / 15€</span></div>
+                    <div class="price-item"><span class="price-name">Strasssteine (1 / 10 Stück)</span><div class="price-dots"></div><span class="price-value">1€ / 5€</span></div>
+                    <div class="price-item"><span class="price-name">Lackieren / Ablösen</span><div class="price-dots"></div><span class="price-value">je 10,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Kürzen + Feilen</span><div class="price-dots"></div><span class="price-value">7,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Nagelreparatur</span><div class="price-dots"></div><span class="price-value">3,00 €</span></div>
                 </div>
+            </div>
+
+            <div class="pricing-box anim fade-up" style="transition-delay: 0.2s;">
+                <h3 class="box-title">Wimpern & Beauty</h3>
+                
+                <!-- Hình ảnh Mi online như yêu cầu -->
+                <div class="pricing-img-wrapper">
+                    <img src="13.jpg" alt="Wimpernverlängerung">
+                </div>
+
                 <div class="pricing-category">
-                    <h4>Entfernen</h4>
-                    <div class="price-item"><span class="price-name">- Wimpern entfernen</span><span class="price-value">25,00 €</span></div>
+                    <h4>Wimpernverlängerung (Neuauflage)</h4>
+                    <div class="price-item"><span class="price-name">1 : 1 (Classic)</span><div class="price-dots"></div><span class="price-value">60,00 €</span></div>
+                    <div class="price-item"><span class="price-name">2D - 3D (Volumentechnik)</span><div class="price-dots"></div><span class="price-value">70,00 €</span></div>
+                    <div class="price-item"><span class="price-name">4D - 7D (Volumentechnik)</span><div class="price-dots"></div><span class="price-value">85,00 €</span></div>
                 </div>
+
+                <div class="pricing-category">
+                    <h4>Auffüllen</h4>
+                    <div class="price-item"><span class="price-name">nach 2 Wochen</span><div class="price-dots"></div><span class="price-value">ab 35,00 €</span></div>
+                    <div class="price-item"><span class="price-name">nach 3 Wochen</span><div class="price-dots"></div><span class="price-value">ab 45,00 €</span></div>
+                    <div class="price-item"><span class="price-name">nach 4 Wochen</span><div class="price-dots"></div><span class="price-value">ab 55,00 €</span></div>
+                </div>
+
+                <div class="pricing-category">
+                    <h4>Lifting & Beauty</h4>
+                    <div class="price-item"><span class="price-name">Lashslifting mit Keratin</span><div class="price-dots"></div><span class="price-value">35,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Wimpern färben</span><div class="price-dots"></div><span class="price-value">15,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Augenbrauen färben</span><div class="price-dots"></div><span class="price-value">10,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Augenbrauen waxing</span><div class="price-dots"></div><span class="price-value">10,00 €</span></div>
+                    <div class="price-item"><span class="price-name">Wimpern entfernen</span><div class="price-dots"></div><span class="price-value">25,00 €</span></div>
+                </div>
+                
                 <div class="pricing-note">
-                    <i class="fa-solid fa-circle-info"></i> Nach 5 Wochen berechnen wir den Neuauflagepreis. Angebrochene Wochen werden aufgerundet.<br><br>
-                    Das Auffüllen der Wimpernverlängerung aus einem Fremdstudio erfolgt nach Prüfung der vorhandenen Qualität, ggf. erst nach Entfernung.<br><br>
-                    <strong>Wir arbeiten nur mit Terminen.</strong>
+                    Nach 5 Wochen berechnen wir den Neuauflagepreis. Auffüllen aus Fremdstudios nach Prüfung. <strong>Für Wimpern arbeiten wir nur mit Terminen.</strong>
                 </div>
             </div>
 
         </div>
     </section>
 
+    <!-- Testimonials Slider -->
     <section class="testimonials">
-        <h2 class="section-title anim fade-up">Was unsere Kunden sagen</h2>
+        <h2 class="section-title anim fade-up">Kundenstimmen</h2>
         <div class="testi-slider-container">
             <div class="testi-track">
-                
                 <div class="testi-card">
                     <div>
                         <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p class="testi-text">"Ich bin sehr zufrieden habe ein inspo Bild mitgebracht habe gesagt was ich gern möchte und was nicht und Sie hat mehrmals nachgefragt ob es mir so gefällt ich bin sehr zufrieden mit dem Endergebnis."</p>
+                        <p class="testi-text">"Ich bin sehr zufrieden. Habe ein Inspo Bild mitgebracht und gesagt was ich gern möchte. Sie hat mehrmals nachgefragt ob es mir so gefällt. Tolles Endergebnis."</p>
                     </div>
-                    <h4 class="testi-name">- Lea</h4>
+                    <h4 class="testi-name">Lea</h4>
                 </div>
                 <div class="testi-card">
                     <div>
                         <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p class="testi-text">"Ich lasse mir nur zu besonderen Anlässen Nägel machen. Bin sehr zufrieden. Tolle Arbeit. Danke"</p>
+                        <p class="testi-text">"Ich lasse mir nur zu besonderen Anlässen Nägel machen. Bin sehr zufrieden. Tolle Arbeit. Danke."</p>
                     </div>
-                    <h4 class="testi-name">- Anja Fliegner</h4>
+                    <h4 class="testi-name">Anja Fliegner</h4>
                 </div>
                 <div class="testi-card">
                     <div>
                         <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p class="testi-text">"Vielen Dank nochmal für die geduldige Designerin. Das Ergebnis spricht für sich 🥰"</p>
+                        <p class="testi-text">"Vielen Dank nochmal für die geduldige Designerin. Das Ergebnis spricht für sich."</p>
                     </div>
-                    <h4 class="testi-name">- Sabine Lehmann</h4>
+                    <h4 class="testi-name">Sabine Lehmann</h4>
                 </div>
                 <div class="testi-card">
                     <div>
                         <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p class="testi-text">"Keine Wartezeiten, Kundenwunsch sehr gut umgesetzt"</p>
+                        <p class="testi-text">"Keine Wartezeiten, Kundenwunsch sehr gut umgesetzt."</p>
                     </div>
-                    <h4 class="testi-name">- Marika Z</h4>
+                    <h4 class="testi-name">Marika Z</h4>
                 </div>
-
+                <!-- Duplicate -->
                 <div class="testi-card">
                     <div>
                         <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p class="testi-text">"Ich bin sehr zufrieden habe ein inspo Bild mitgebracht habe gesagt was ich gern möchte und was nicht und Sie hat mehrmals nachgefragt ob es mir so gefällt ich bin sehr zufrieden mit dem Endergebnis."</p>
+                        <p class="testi-text">"Ich bin sehr zufrieden. Habe ein Inspo Bild mitgebracht und gesagt was ich gern möchte. Sie hat mehrmals nachgefragt ob es mir so gefällt. Tolles Endergebnis."</p>
                     </div>
-                    <h4 class="testi-name">- Lea</h4>
-                </div>
-                <div class="testi-card">
-                    <div>
-                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p class="testi-text">"Ich lasse mir nur zu besonderen Anlässen Nägel machen. Bin sehr zufrieden. Tolle Arbeit. Danke"</p>
-                    </div>
-                    <h4 class="testi-name">- Anja Fliegner</h4>
+                    <h4 class="testi-name">Lea</h4>
                 </div>
                 <div class="testi-card">
                     <div>
                         <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p class="testi-text">"Vielen Dank nochmal für die geduldige Designerin. Das Ergebnis spricht für sich 🥰"</p>
+                        <p class="testi-text">"Ich lasse mir nur zu besonderen Anlässen Nägel machen. Bin sehr zufrieden. Tolle Arbeit. Danke."</p>
                     </div>
-                    <h4 class="testi-name">- Sabine Lehmann</h4>
+                    <h4 class="testi-name">Anja Fliegner</h4>
                 </div>
-                <div class="testi-card">
-                    <div>
-                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <p class="testi-text">"Keine Wartezeiten, Kundenwunsch sehr gut umgesetzt"</p>
-                    </div>
-                    <h4 class="testi-name">- Marika Z</h4>
-                </div>
-                
             </div>
         </div>
     </section>
 
-    <section id="galerie" style="background-color: var(--white);">
-        <h2 class="section-title anim fade-up">Unsere Arbeiten & Studio</h2>
-        
-        <h3 class="box-title anim fade-up" style="text-align: center; margin-bottom: 2rem;">Unsere Arbeiten (Nails)</h3>
-        <div class="gallery-grid-4">
-            <div class="gallery-item anim zoom-in"><img src="6.jpg" alt="Nail Art Design"><div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div></div>
-            <div class="gallery-item anim zoom-in" style="transition-delay: 0.1s;"><img src="5.jpg" alt="Nail Art mit Strass"><div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div></div>
-            <div class="gallery-item anim zoom-in" style="transition-delay: 0.2s;"><img src="4.jpg" alt="Buntes Design"><div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div></div>
-            <div class="gallery-item anim zoom-in" style="transition-delay: 0.3s;"><img src="3.jpg" alt="Stiletto Nails French"><div class="gallery-overlay"><i class="fa-solid fa-heart"></i></div></div>
+    <!-- Gallery DÙNG ẢNH GỐC BÊN CHỊ -->
+    <section id="galerie">
+        <h2 class="section-title anim fade-up">Galerie</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item anim fade-up"><img src="9.jpg" alt="Wimpernverlängerung"></div>
+            <div class="gallery-item anim fade-up" style="transition-delay: 0.1s;"><img src="10.jpg" alt="Wimpern Top View"></div>
+            <div class="gallery-item anim fade-up" style="transition-delay: 0.2s;"><img src="12.jpg" alt="Lashes Face"></div>
+            <div class="gallery-item anim fade-up" style="transition-delay: 0.3s;"><img src="2.jpg" alt="Pediküre Massage Stühle"></div>
         </div>
-        
-        <h3 class="box-title anim fade-up" style="text-align: center; margin-top: 4rem; margin-bottom: 2rem;">Unser Studio</h3>
-        <div class="gallery-grid-2">
-            <div class="gallery-item anim zoom-in"><img src="2.jpg" alt="Pediküre Massage Stühle"><div class="gallery-overlay"><i class="fa-solid fa-spa"></i></div></div>
-            <div class="gallery-item anim zoom-in" style="transition-delay: 0.1s;"><img src="7.jpg" alt="Fun Nails Studio"><div class="gallery-overlay"><i class="fa-solid fa-store"></i></div></div>
+        <div class="gallery-grid">
+            <div class="gallery-item anim fade-up"><img src="11.jpg" alt="Black Pointed Nails"></div>
+            <div class="gallery-item anim fade-up" style="transition-delay: 0.1s;"><img src="6.jpg" alt="Nail Art Design"></div>
+            <div class="gallery-item anim fade-up" style="transition-delay: 0.2s;"><img src="5.jpg" alt="Nail Art mit Strass"></div>
+            <div class="gallery-item anim fade-up" style="transition-delay: 0.3s;"><img src="4.jpg" alt="Buntes Design"></div>
         </div>
     </section>
 
-    <section id="kontakt" style="background-color: var(--bg-cream); padding-top: 5rem;">
-        <h2 class="section-title anim fade-up">Besuchen Sie uns</h2>
+    <!-- Contact Info -->
+    <section id="kontakt" style="background-color: var(--white); padding-top: 5rem;">
         <div class="info-section">
-            <div class="info-card anim slide-left">
+            <div class="info-card anim fade-up">
                 <i class="fa-regular fa-clock"></i>
                 <h3>Öffnungszeiten</h3>
                 <p>Montag - Samstag</p>
-                <p style="font-size: 1.3rem; color: var(--primary-red); margin-top: 10px;"><strong>09:00 - 20:00 Uhr</strong></p>
+                <p style="color: var(--black); margin-top: 10px; font-weight: 500;">09:00 - 20:00 Uhr</p>
             </div>
-            <div class="info-card anim fade-up">
+            <div class="info-card anim fade-up" style="transition-delay: 0.1s;">
                 <i class="fa-solid fa-location-dot"></i>
                 <h3>Adresse</h3>
                 <p>Innere Plauensche Str. 14</p>
                 <p>08056 Zwickau</p>
-                <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">(Zwickau Arcaden)</p>
+                <p style="margin-top: 5px; font-size: 0.85rem;">(Zwickau Arcaden)</p>
             </div>
-            <div class="info-card anim slide-right">
+            <div class="info-card anim fade-up" style="transition-delay: 0.2s;">
                 <i class="fa-solid fa-phone"></i>
                 <h3>Kontakt</h3>
-                <p><a href="tel:+4937528389180" style="font-size: 1.4rem; color: var(--primary-red);">0375 - 28 38 91 80</a></p>
-                <p style="margin-top: 10px;"><a href="mailto:haitau30061970@gmail.com" style="font-size: 0.95rem;">haitau30061970@gmail.com</a></p>
+                <p><a href="tel:+4937528389180" style="color: var(--black); font-weight: 500;">0375 - 28 38 91 80</a></p>
+                <p style="margin-top: 10px;"><a href="mailto:haitau30061970@gmail.com">haitau30061970@gmail.com</a></p>
             </div>
         </div>
     </section>
 
-    <footer>
-        <img src="logo.png" alt="Fun Nails Zwickau Logo" class="footer-logo">
-        <div class="social-links">
-            <a href="https://www.facebook.com/share/14e8R3SHeR4/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/funnails.a?igsh=YTZudnM3cGdxMjBm" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <!-- FOOTER MỚI -->
+    <footer id="kontakt">
+        <div class="footer-logo-container">
+            <img src="logo.png" alt="Fun Nails Logo" class="footer-logo">
         </div>
-        <p>&copy; 2024 Fun Nails Zwickau. Alle Rechte vorbehalten. | American Style Nails & Wimpernverlängerung</p>
+        
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Über Uns</h3>
+                <p><strong>Hotline:</strong> 0375 - 28 38 91 80</p>
+                <p><strong>Email:</strong> haitau30061970@gmail.com</p>
+                <p><strong>Adresse:</strong> Innere Plauensche Str. 14, 08056 Zwickau (Arcaden)</p>
+                <br>
+                <p><strong>Montag – Samstag:</strong> 09:00 – 20:00 Uhr</p>
+                <p><strong>Sonn- und Feiertage:</strong> geschlossen</p>
+                
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/14e8R3SHeR4/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/funnails.a?igsh=YTZudnM3cGdxMjBm" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col footer-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2524.364234057816!2d12.494793615742296!3d50.718804979513364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a7318c502b4d1d%3A0x6b2b78b0e791b8d2!2sInnere%20Plauensche%20Str.%2014%2C%2008056%20Zwickau%2C%20%C4%90%E1%BB%A9c!5e0!3m2!1svi!2s!4v1689844840000!5m2!1svi!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 Fun Nails Zwickau. Alle Rechte vorbehalten. | Premium Nails & Wimpernverlängerung</p>
+        </div>
     </footer>
 
+    <!-- Script -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15
-            };
-
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -607,16 +704,12 @@
                 });
             }, observerOptions);
 
-            const elementsToAnimate = document.querySelectorAll('.anim:not(.testi-card)');
-            elementsToAnimate.forEach(el => observer.observe(el));
+            document.querySelectorAll('.anim:not(.testi-card)').forEach(el => observer.observe(el));
 
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.style.padding = '5px 5%';
-                } else {
-                    header.style.padding = '15px 5%';
-                }
+                if (window.scrollY > 50) { header.style.padding = '10px 5%'; } 
+                else { header.style.padding = '15px 5%'; }
             });
 
             const menuToggle = document.getElementById('mobile-menu');
@@ -627,20 +720,17 @@
             menuToggle.addEventListener('click', function() {
                 navList.classList.toggle('nav-active');
                 if (navList.classList.contains('nav-active')) {
-                    menuIcon.classList.remove('fa-bars');
-                    menuIcon.classList.add('fa-xmark');
+                    menuIcon.classList.remove('fa-bars'); menuIcon.classList.add('fa-xmark');
                 } else {
-                    menuIcon.classList.remove('fa-xmark');
-                    menuIcon.classList.add('fa-bars');
+                    menuIcon.classList.remove('fa-xmark'); menuIcon.classList.add('fa-bars');
                 }
             });
 
             navLinks.forEach(link => {
                 link.addEventListener('click', function() {
-                    if (navList.classList.contains('nav-active')) {
+                    if (window.innerWidth <= 900) {
                         navList.classList.remove('nav-active');
-                        menuIcon.classList.remove('fa-xmark');
-                        menuIcon.classList.add('fa-bars');
+                        menuIcon.classList.remove('fa-xmark'); menuIcon.classList.add('fa-bars');
                     }
                 });
             });

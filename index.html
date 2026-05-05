@@ -9,12 +9,18 @@
     
     <style>
         :root {
-            --black: #111111; 
-            --white: #FFFFFF;   
-            --bg-gray: #F9F9F9;
-            --border-color: #E0E0E0;
-            --text-light: #777777;
-            --btn-orange: #f1a058; 
+            --bg-white: #ffffff;
+            --bg-light: #fcfcfc;
+            --bg-gray: #f5f5f5;
+            --text-dark: #1a1a1a;
+            --text-muted: #555555;
+            --border-light: #eaeaea;
+            
+            /* Tông Đỏ Sang Trọng làm điểm nhấn */
+            --red-primary: #D32F2F; 
+            --red-hover: #b71c1c;
+            --red-light: rgba(211, 47, 47, 0.05);
+
             --section-padding: 5rem 5%;
         }
 
@@ -22,8 +28,8 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-gray);
-            color: var(--black);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
             line-height: 1.8;
             overflow-x: hidden;
             scroll-behavior: smooth;
@@ -32,10 +38,11 @@
         }
         body::-webkit-scrollbar { display: none; }
 
-        /* --- HEADER & MEGA MENU (DESKTOP) --- */
+        /* --- HEADER & MEGA MENU --- */
         header {
-            background-color: var(--black);
-            padding: 10px 5%;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -43,67 +50,63 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            transition: padding 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            transition: padding 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
         }
 
-        .logo-link { display: flex; align-items: center; z-index: 1001; }
-        .logo-img { max-height: 50px; width: auto; transition: transform 0.3s ease; object-fit: contain;}
+        .logo-link { display: flex; align-items: center; z-index: 1001; text-decoration: none;}
+        .logo-img { max-height: 50px; width: auto; transition: transform 0.3s ease; object-fit: contain; }
         .logo-link:hover .logo-img { transform: scale(1.05); }
 
-        .menu-toggle { display: none; font-size: 1.8rem; color: var(--white); cursor: pointer; z-index: 1001; }
+        .menu-toggle { display: none; font-size: 1.8rem; color: var(--red-primary); cursor: pointer; z-index: 1001; }
 
         nav { display: flex; align-items: center; gap: 2rem; height: 100%;}
         
-        /* Menu List Desktop */
         .nav-list { list-style: none; display: flex; gap: 2rem; align-items: center; margin: 0; height: 100%;}
         .nav-list li { position: relative; height: 100%; display: flex; align-items: center; padding: 15px 0;}
         .nav-list li > a {
-            text-decoration: none; color: var(--white); font-weight: 600; font-size: 0.8rem;
+            text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 0.85rem;
             text-transform: uppercase; letter-spacing: 1px; position: relative; transition: color 0.3s;
             display: flex; align-items: center; gap: 5px; cursor: pointer;
         }
         .nav-list li > a::after {
             content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
-            background-color: var(--white); transition: width 0.3s ease;
+            background: var(--red-primary); transition: width 0.3s ease;
         }
+        .nav-list li > a:hover { color: var(--red-primary); }
         .nav-list li > a:hover::after { width: 100%; }
 
-        /* Mega Menu Desktop */
+        /* Mega Menu */
         .has-mega-menu:hover .mega-menu { opacity: 1; visibility: visible; transform: translateY(0); }
         .mega-menu {
             position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(15px);
-            background-color: var(--white); width: max-content; padding: 20px; border-radius: 8px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2); display: flex; gap: 20px; opacity: 0; visibility: hidden;
-            transition: all 0.3s ease; z-index: 1000; border-top: 3px solid var(--btn-orange);
-        }
-        .mega-menu::before {
-            content: ''; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
-            border-width: 0 10px 10px 10px; border-style: solid; border-color: transparent transparent var(--btn-orange) transparent;
+            background-color: var(--bg-white); width: max-content; padding: 20px; border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; gap: 20px; opacity: 0; visibility: hidden;
+            transition: all 0.3s ease; z-index: 1000; border-top: 3px solid var(--red-primary);
         }
         .mega-item { width: 200px; display: flex; flex-direction: column; align-items: center; text-decoration: none; transition: transform 0.3s ease;}
         .mega-item:hover { transform: translateY(-5px); }
-        .mega-img-box { width: 100%; height: 120px; overflow: hidden; border-radius: 5px; margin-bottom: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .mega-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .mega-item:hover .mega-img-box img { transform: scale(1.1); }
-        .mega-item span { color: var(--black); font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.1rem; }
-        .mega-item p { color: var(--text-light); font-size: 0.8rem; text-align: center; margin-top: 5px; font-weight: 300; line-height: 1.4;}
+        .mega-img-box { width: 100%; height: 120px; overflow: hidden; border-radius: 5px; margin-bottom: 10px; border: 1px solid var(--border-light); }
+        .mega-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; filter: grayscale(10%); }
+        .mega-item:hover .mega-img-box img { transform: scale(1.1); filter: grayscale(0%); }
+        .mega-item span { color: var(--red-primary); font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.1rem; }
+        .mega-item p { color: var(--text-muted); font-size: 0.8rem; text-align: center; margin-top: 5px; font-weight: 300; line-height: 1.4;}
 
         .header-btn {
-            background-color: var(--btn-orange); color: var(--white); padding: 10px 25px; border-radius: 5px;
-            text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: background 0.3s;
+            background: var(--red-primary); color: var(--bg-white); padding: 10px 25px; border-radius: 4px;
+            text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: background 0.3s, transform 0.3s;
             text-transform: uppercase; letter-spacing: 1px;
         }
-        .header-btn:hover { background-color: #e08e45; color: var(--white);}
+        .header-btn:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);}
 
         /* --- GLOBAL TITLES --- */
         section { padding: var(--section-padding); }
         .section-title {
             text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem;
-            color: var(--black); margin-bottom: 3.5rem; font-weight: 400; letter-spacing: 1px;
+            color: var(--text-dark); margin-bottom: 3.5rem; font-weight: 600; letter-spacing: 1px;
         }
         .section-title::after {
-            content: ''; display: block; width: 50px; height: 2px; background-color: var(--btn-orange);
+            content: ''; display: block; width: 50px; height: 3px; background: var(--red-primary);
             margin: 20px auto 0;
         }
 
@@ -111,127 +114,155 @@
         .hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 60px; }
         .hero::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('11.jpg') center/cover;
-            z-index: -1; animation: bgZoom 20s infinite alternate ease-in-out;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url('11.jpg') center/cover;
+            z-index: -1; animation: bgZoom 25s infinite alternate ease-in-out;
         }
         @keyframes bgZoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
 
         .hero-content { z-index: 1; max-width: 800px; padding: 0 20px; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--white); margin-bottom: 1rem; line-height: 1.2; font-weight: 400; letter-spacing: 3px; animation: fadeInDown 1s ease forwards; }
-        .hero p { font-size: 1.1rem; margin-bottom: 3rem; color: rgba(255,255,255,0.9); font-weight: 300; letter-spacing: 2px; animation: fadeInUp 1s ease 0.3s forwards; opacity: 0; text-transform: uppercase; }
+        .hero h1 { 
+            font-family: 'Playfair Display', serif; font-size: 4.5rem; color: var(--bg-white);
+            margin-bottom: 1rem; line-height: 1.2; font-weight: 600; letter-spacing: 3px; animation: fadeInDown 1s ease forwards; 
+        }
+        .hero p { font-size: 1.1rem; margin-bottom: 3.5rem; color: rgba(255,255,255,0.9); font-weight: 400; letter-spacing: 3px; animation: fadeInUp 1s ease 0.3s forwards; opacity: 0; text-transform: uppercase; }
         
         .btn-main {
-            display: inline-block; padding: 15px 40px; background-color: transparent; color: var(--btn-orange);
-            text-decoration: none; border-radius: 5px; font-weight: 600; letter-spacing: 2px;
-            text-transform: uppercase; transition: all 0.4s ease; animation: fadeIn 1s ease 0.6s forwards; opacity: 0; font-size: 0.9rem; border: 2px solid var(--btn-orange);
+            display: inline-block; padding: 15px 45px; background-color: var(--red-primary); color: var(--bg-white);
+            text-decoration: none; border-radius: 4px; font-weight: 600; letter-spacing: 2px;
+            text-transform: uppercase; transition: all 0.4s ease; animation: fadeIn 1s ease 0.6s forwards; opacity: 0; font-size: 0.9rem;
+            box-shadow: 0 5px 20px rgba(211, 47, 47, 0.4);
         }
-        .btn-main:hover { background-color: var(--btn-orange); color: var(--white); }
+        .btn-main:hover { background-color: var(--red-hover); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(211, 47, 47, 0.5);}
 
         /* --- ABOUT US --- */
-        #ueber-uns { background-color: var(--white); }
-        .about-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1100px; margin: 0 auto; }
-        .about-text { font-size: 1.05rem; color: var(--text-light); text-align: justify; font-weight: 300; line-height: 1.8;}
-        .about-text strong { color: var(--black); font-weight: 500; }
-        .about-image img { width: 100%; border: 1px solid var(--border-color); filter: grayscale(10%); padding: 10px; transition: transform 0.5s; object-fit: cover; }
+        #ueber-uns { background-color: var(--bg-white); }
+        .about-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+        .about-text { font-size: 1.05rem; color: var(--text-muted); text-align: justify; font-weight: 400; line-height: 1.9;}
+        .about-text strong { color: var(--red-primary); font-weight: 600; }
+        .about-image { position: relative; }
+        .about-image::after {
+            content: ''; position: absolute; top: 20px; left: 20px; right: -20px; bottom: -20px;
+            background-color: var(--red-light); z-index: 0; border-radius: 8px;
+        }
+        .about-image img { width: 100%; position: relative; z-index: 1; border-radius: 8px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.08);}
 
         /* --- SERVICES CARDS --- */
         #leistungen { background-color: var(--bg-gray); }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
-        .service-card { background: var(--white); padding: 3rem 2rem; text-align: center; border: 1px solid var(--border-color); transition: all 0.4s ease; }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.05); border-color: var(--black); }
-        .service-card i { font-size: 2.5rem; color: var(--black); margin-bottom: 1.5rem; transition: transform 0.4s; }
-        .service-card:hover i { transform: scale(1.1); color: var(--btn-orange);}
-        .service-card h3 { color: var(--black); margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; }
-        .service-card p { font-weight: 300; font-size: 0.95rem; color: var(--text-light); line-height: 1.6;}
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto; }
+        .service-card { background: var(--bg-white); padding: 3.5rem 2rem; text-align: center; border-radius: 8px; border: 1px solid var(--border-light); transition: all 0.4s ease; }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.05); border-color: var(--red-primary); }
+        .service-card i { font-size: 2.8rem; margin-bottom: 1.5rem; transition: transform 0.4s; color: var(--red-primary); }
+        .service-card:hover i { transform: scale(1.1); }
+        .service-card h3 { color: var(--text-dark); margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; }
+        .service-card p { font-weight: 400; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;}
 
         /* --- PRICING --- */
-        #preise { background-color: var(--white); }
-        .pricing-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 4rem; max-width: 1200px; margin: 0 auto; }
-        .pricing-box h3.box-title { text-align: center; color: var(--black); font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 2rem; font-weight: 600; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;}
+        #preise { background-color: var(--bg-white); }
+        .pricing-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 4rem; max-width: 1200px; margin: 0 auto; }
+        .pricing-box { background: var(--bg-white); padding: 3rem; border-radius: 12px; border: 1px solid var(--border-light); box-shadow: 0 10px 40px rgba(0,0,0,0.03);}
+        .pricing-box h3.box-title { text-align: center; color: var(--text-dark); font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 2rem; font-weight: 600; border-bottom: 2px solid var(--red-light); padding-bottom: 1.5rem;}
         
-        .pricing-img-wrapper { overflow: hidden; border-radius: 5px; margin-bottom: 2.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .pricing-img-wrapper img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.5s ease; display: block; filter: grayscale(10%);}
-        .pricing-img-wrapper:hover img { transform: scale(1.05); filter: grayscale(0%);}
+        .pricing-img-wrapper { overflow: hidden; margin-bottom: 2.5rem; border-radius: 8px; }
+        .pricing-img-wrapper img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.8s ease; display: block; filter: brightness(0.95);}
+        .pricing-img-wrapper:hover img { transform: scale(1.05); filter: brightness(1);}
 
         .pricing-category { margin-bottom: 2.5rem; }
-        .pricing-category h4 { color: var(--btn-orange); font-size: 0.9rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; text-align: center;}
+        .pricing-category h4 { color: var(--red-primary); font-size: 0.9rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; text-align: center; background: var(--red-light); padding: 8px 0; border-radius: 4px;}
         
         .price-item { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.8rem; }
-        .price-name { font-weight: 400; color: var(--text-light); font-size: 0.95rem; padding-right: 10px; background: var(--white); z-index: 1;}
+        .price-name { font-weight: 500; color: var(--text-muted); font-size: 0.95rem; padding-right: 10px; background: var(--bg-white); z-index: 1;}
         .price-dots { flex-grow: 1; border-bottom: 1px dotted #ccc; margin: 0 5px; position: relative; top: -5px; z-index: 0;}
-        .price-value { font-weight: 600; color: var(--black); white-space: nowrap; font-size: 1rem; padding-left: 10px; background: var(--white); z-index: 1;}
-        .pricing-note { margin-top: 2rem; text-align: center; font-size: 0.85rem; color: #999; font-style: italic; font-weight: 300; border-top: 1px solid var(--border-color); padding-top: 1.5rem; line-height: 1.6;}
+        .price-value { font-weight: 600; color: var(--text-dark); white-space: nowrap; font-size: 1.05rem; padding-left: 10px; background: var(--bg-white); z-index: 1;}
+        .pricing-note { margin-top: 2.5rem; text-align: center; font-size: 0.85rem; color: #888; font-style: italic; font-weight: 400; border-top: 1px solid var(--border-light); padding-top: 1.5rem; line-height: 1.6;}
 
         /* --- TESTIMONIALS SLIDER --- */
-        .testimonials { background-color: var(--black); text-align: center; overflow: hidden; padding: 4rem 5%;}
-        .testimonials .section-title { color: var(--white); }
-        .testimonials .section-title::after { background-color: var(--btn-orange); }
+        .testimonials { background-color: var(--bg-light); text-align: center; overflow: hidden; padding: 6rem 5%; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);}
         .testi-slider-container { width: 100%; overflow: hidden; padding: 1rem 0; position: relative; }
-        .testi-track { display: flex; gap: 2rem; width: max-content; animation: scroll-left 40s linear infinite; }
+        .testi-track { display: flex; gap: 2.5rem; width: max-content; animation: scroll-left 40s linear infinite; }
         .testi-track:hover { animation-play-state: paused; }
         .testi-card { 
-            background: rgba(255,255,255,0.03); padding: 2.5rem; border: 1px solid rgba(255,255,255,0.1); transition: background 0.3s;
-            width: 400px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: space-between; text-align: center; border-radius: 8px;
+            background: var(--bg-white); padding: 3rem 2.5rem; border: 1px solid var(--border-light); border-top: 3px solid var(--red-primary); border-radius: 8px; transition: all 0.4s ease;
+            width: 420px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: space-between; text-align: center; box-shadow: 0 10px 20px rgba(0,0,0,0.02);
         }
-        .testi-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2);}
-        .stars { color: var(--btn-orange); margin-bottom: 20px; font-size: 0.9rem; letter-spacing: 5px;}
-        .testi-text { font-style: italic; font-weight: 300; margin-bottom: 25px; font-size: 1rem; color: #CCC; font-family: 'Playfair Display', serif; line-height: 1.6;}
-        .testi-name { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--white);}
-        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 1rem)); } }
+        .testi-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(211, 47, 47, 0.08);}
+        .stars { margin-bottom: 25px; font-size: 0.9rem; letter-spacing: 5px; color: #ffb400; }
+        .testi-text { font-style: italic; font-weight: 400; margin-bottom: 30px; font-size: 1.05rem; color: var(--text-muted); font-family: 'Playfair Display', serif; line-height: 1.8;}
+        .testi-name { font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dark);}
+        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 1.25rem)); } }
 
-        /* --- GALLERY --- */
-        #galerie { background-color: var(--bg-gray); }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; max-width: 1200px; margin: 0 auto 15px; }
-        .gallery-item { position: relative; overflow: hidden; height: 300px; cursor: pointer; border-radius: 5px;}
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; filter: grayscale(15%);}
-        .gallery-item:hover img { transform: scale(1.05); filter: grayscale(0%);}
+        /* --- GALLERY MASONRY (Đã fix lỗi cắt hình) --- */
+        #galerie { background-color: var(--bg-white); }
+        .gallery-masonry {
+            column-count: 4; 
+            column-gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery-item {
+            break-inside: avoid; 
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto; 
+            display: block;
+            transition: transform 0.8s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
 
         /* --- INFO / KONTAKT --- */
-        .info-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0; max-width: 1200px; margin: 0 auto; border: 1px solid var(--border-color); background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.03);}
-        .info-card { padding: 3rem 2rem; text-align: center; border-right: 1px solid var(--border-color); transition: all 0.4s ease; }
+        #kontakt { background-color: var(--bg-gray); padding-top: 6rem; }
+        .info-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0; max-width: 1200px; margin: 0 auto; border: 1px solid var(--border-light); background: var(--bg-white); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03);}
+        .info-card { padding: 4rem 2rem; text-align: center; border-right: 1px solid var(--border-light); transition: all 0.4s ease; }
         .info-card:last-child { border-right: none; }
-        .info-card:hover { background-color: var(--black); color: var(--white); }
-        .info-card i { font-size: 2rem; color: var(--btn-orange); margin-bottom: 1.5rem; transition: transform 0.4s; }
-        .info-card:hover i { transform: scale(1.2); }
-        .info-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 1rem; font-weight: 600; transition: color 0.4s;}
-        .info-card p, .info-card a { color: var(--text-light); text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: color 0.4s;}
-        .info-card:hover p, .info-card:hover a { color: #CCC; }
+        .info-card:hover { background-color: var(--red-primary); }
+        .info-card i { font-size: 2.2rem; color: var(--red-primary); margin-bottom: 1.5rem; transition: transform 0.4s; }
+        .info-card:hover i { transform: scale(1.1); color: var(--bg-white); }
+        .info-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 600; color: var(--text-dark); transition: color 0.4s;}
+        .info-card p, .info-card a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.4s; line-height: 1.6;}
+        .info-card:hover h3, .info-card:hover p, .info-card:hover a { color: var(--bg-white); }
 
-        /* --- FOOTER MỚI --- */
+        /* --- FOOTER --- */
         footer { 
-            background: linear-gradient(rgba(17, 17, 17, 0.95), rgba(17, 17, 17, 0.95)), url('https://statics.pancake.vn/web-media/11/e4/5a/e7/9b6319751f2821249a6d91a783ffbbe5fbaeda47769497654372283d-w:3450-h:1806-l:7358562-t:image/png.png') center/cover; 
-            color: var(--white); 
-            padding: 5rem 5% 2rem; 
+            background: #111111; 
+            color: #cccccc; 
+            padding: 6rem 5% 2rem; 
         }
         
-        .footer-logo-container { text-align: center; margin-bottom: 3rem; }
-        .footer-logo { max-width: 150px; object-fit: contain; }
+        .footer-logo-container { text-align: center; margin-bottom: 4rem; }
+        .footer-logo { max-width: 180px; object-fit: contain; }
 
-        .footer-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto; text-align: left; }
-        .footer-col h3 { font-size: 1.6rem; margin-bottom: 1.5rem; font-family: 'Playfair Display', serif; font-weight: 600; color: var(--white); border-bottom: 1px solid #333; padding-bottom: 10px; display: inline-block;}
-        .footer-col p { font-size: 0.95rem; margin-bottom: 12px; font-weight: 300; color: #BBB; line-height: 1.6; }
-        .footer-col p strong { font-weight: 600; color: var(--white); }
-        .footer-map iframe { width: 100%; height: 250px; border: 2px solid #333; border-radius: 8px; filter: grayscale(20%); transition: filter 0.3s;}
-        .footer-map iframe:hover { filter: grayscale(0%);}
+        .footer-content { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1200px; margin: 0 auto; text-align: left; }
+        .footer-col h3 { font-size: 1.5rem; margin-bottom: 2rem; font-family: 'Playfair Display', serif; font-weight: 500; color: var(--bg-white); border-bottom: 1px solid #333; padding-bottom: 15px; display: inline-block;}
+        .footer-col p { font-size: 0.95rem; margin-bottom: 15px; font-weight: 300; line-height: 1.6; }
+        .footer-col p strong { font-weight: 500; color: var(--bg-white); }
+        .footer-map iframe { width: 100%; height: 280px; border-radius: 8px; border: none; filter: grayscale(50%); transition: filter 0.5s;}
+        .footer-map iframe:hover { filter: grayscale(0%); }
 
-        .footer-bottom { text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #333; font-size: 0.8rem; color: #777; font-weight: 300; }
+        .footer-bottom { text-align: center; margin-top: 5rem; padding-top: 2rem; border-top: 1px solid #222; font-size: 0.8rem; font-weight: 300; letter-spacing: 1px;}
 
-        .social-links { margin-top: 1.5rem; display: flex; gap: 12px;}
+        .social-links { margin-top: 2rem; display: flex; gap: 15px;}
         .social-links a {
-            display: inline-flex; justify-content: center; align-items: center; width: 40px; height: 40px;
-            background-color: rgba(255,255,255,0.05); color: var(--white); border-radius: 5px; border: 1px solid rgba(255,255,255,0.1);
-            font-size: 1.1rem; transition: all 0.3s ease; text-decoration: none;
+            display: inline-flex; justify-content: center; align-items: center; width: 45px; height: 45px;
+            background-color: rgba(255,255,255,0.05); color: var(--bg-white); border-radius: 50%;
+            font-size: 1.2rem; transition: all 0.4s ease; text-decoration: none;
         }
-        .social-links a:hover { background-color: var(--btn-orange); border-color: var(--btn-orange); transform: translateY(-3px);}
+        .social-links a:hover { background: var(--red-primary); color: var(--bg-white); transform: translateY(-3px);}
 
         /* --- FAB --- */
-        .fab-container { position: fixed; bottom: 30px; right: 30px; z-index: 999; }
+        .fab-container { position: fixed; bottom: 40px; right: 40px; z-index: 999; }
         .fab {
-            width: 60px; height: 60px; background: var(--btn-orange); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; color: white; font-size: 22px;
-            text-decoration: none; box-shadow: 0 5px 15px rgba(241, 160, 88, 0.4); transition: transform 0.3s;
+            width: 60px; height: 60px; background: var(--red-primary); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: var(--bg-white); font-size: 24px;
+            text-decoration: none; box-shadow: 0 5px 20px rgba(211, 47, 47, 0.4); transition: transform 0.3s;
         }
-        .fab:hover { transform: scale(1.1); }
+        .fab:hover { transform: scale(1.1); background: var(--red-hover);}
 
         /* --- ANIMATIONS --- */
         .anim { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
@@ -242,96 +273,60 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* ========================================================
-           TỐI ƯU HÓA HOÀN TOÀN CHO MOBILE (RESPONSIVE)
+           RESPONSIVE MOBILE
            ======================================================== */
         @media (max-width: 900px) {
-            /* Header & Toggle Button */
-            header { padding: 15px 5%; }
+            header { padding: 15px 5%; background-color: var(--bg-white);}
             .logo-img { max-height: 40px; }
             .menu-toggle { display: block; }
             .header-btn { display: none; } 
             
-            /* Tái cấu trúc Menu Mobile */
             nav { position: static; }
             .nav-list {
-                position: fixed; 
-                top: 70px; /* Nằm ngay dưới header */
-                left: 0; 
-                width: 100%; 
-                background-color: var(--black);
-                flex-direction: column; 
-                align-items: center; 
-                gap: 0; 
-                border-top: 1px solid #222;
-                border-bottom: 1px solid #222;
-                max-height: 0; /* Ẩn menu */
-                overflow: hidden; 
-                transition: max-height 0.5s ease-in-out;
-                z-index: 999;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+                position: fixed; top: 71px; left: 0; width: 100%; 
+                background-color: var(--bg-white); flex-direction: column; 
+                align-items: center; gap: 0; border-top: 1px solid var(--border-light);
+                border-bottom: 1px solid var(--border-light); max-height: 0; overflow: hidden; 
+                transition: max-height 0.5s ease-in-out; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
             }
-            .nav-list.nav-active { 
-                max-height: 100vh; /* Mở full menu */
-                padding: 10px 0 20px;
-                overflow-y: auto; /* Cho phép cuộn nếu menu quá dài */
-            }
-            .nav-list li { 
-                width: 100%; 
-                text-align: center; 
-                border-bottom: 1px solid rgba(255,255,255,0.05); 
-                padding: 0;
-                height: auto;
-            }
+            .nav-list.nav-active { max-height: 100vh; padding: 10px 0 20px; overflow-y: auto; }
+            .nav-list li { width: 100%; text-align: center; border-bottom: 1px solid var(--border-light); padding: 0; height: auto;}
             .nav-list li:last-child { border-bottom: none; }
-            
-            .nav-list li > a { 
-                display: block; 
-                padding: 18px 0; 
-                font-size: 1rem; 
-                width: 100%;
-                letter-spacing: 2px;
-            }
-            .nav-list li > a::after { display: none; } /* Tắt gạch chân trên mobile */
-            
-            /* XÓA Mega Menu rườm rà trên Mobile */
+            .nav-list li > a { display: block; padding: 20px 0; font-size: 1rem; width: 100%; letter-spacing: 2px;}
+            .nav-list li > a::after { display: none; }
             .mega-menu { display: none !important; }
 
-            /* Chỉnh Font Hero */
             .hero { padding-top: 70px; }
-            .hero h1 { font-size: 2.8rem; letter-spacing: 1px;}
-            .hero p { font-size: 0.9rem; margin-bottom: 2rem; }
-            .btn-main { padding: 12px 30px; font-size: 0.8rem; }
+            .hero h1 { font-size: 3rem; letter-spacing: 2px;}
+            .hero p { font-size: 0.9rem; margin-bottom: 2.5rem; letter-spacing: 1px;}
 
-            /* Các section khác */
             section { padding: 4rem 5%; }
-            .section-title { font-size: 2rem; margin-bottom: 2.5rem;}
+            .section-title { font-size: 2.2rem; margin-bottom: 3rem;}
             
-            .about-container, .pricing-wrapper, .footer-content { grid-template-columns: 1fr; gap: 2.5rem;}
-            .about-image { order: -1; } /* Đưa ảnh lên trên chữ */
+            .about-container, .pricing-wrapper, .footer-content { grid-template-columns: 1fr; gap: 3rem;}
+            .about-image { order: -1; } 
+            .about-image::after { display: none; }
             
-            .testi-card { width: 300px; padding: 1.5rem; }
-            
-            /* Tối ưu Contact Cards */
-            .info-section { grid-template-columns: 1fr; border: none; background: transparent; box-shadow: none;}
-            .info-card { 
-                border-right: none; 
-                border: 1px solid var(--border-color); 
-                margin-bottom: 15px; 
-                border-radius: 8px;
-                padding: 2rem 1.5rem;
-            }
+            .pricing-box { padding: 2rem 1.5rem; }
+            .testi-card { width: 320px; padding: 2rem 1.5rem; }
 
-            /* Cân đối lại vị trí nút FAB để không đè text */
-            .fab-container { bottom: 20px; right: 20px; }
-            .fab { width: 50px; height: 50px; font-size: 20px; }
+            .gallery-masonry { column-count: 2; }
             
-            .footer-map iframe { height: 200px; }
+            .info-section { grid-template-columns: 1fr; border: none; background: transparent; box-shadow: none;}
+            .info-card { border-right: none; border: 1px solid var(--border-light); margin-bottom: 20px; background: var(--bg-white); border-radius: 8px;}
+
+            .fab-container { bottom: 20px; right: 20px; }
+            .fab { width: 55px; height: 55px; font-size: 20px; }
+            .footer-map iframe { height: 220px; }
+        }
+
+        @media (max-width: 500px) {
+            .gallery-masonry { column-count: 1; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <header id="header">
         <a href="#home" class="logo-link">
             <img src="logo.png" alt="Fun Nails Logo" class="logo-img">
@@ -340,55 +335,47 @@
             <ul class="nav-list" id="nav-list">
                 <li><a href="#home">Startseite</a></li>
                 <li><a href="#ueber-uns">Über uns</a></li>
-                
-                <!-- Mục Dịch vụ có Mega Menu trên Desktop -->
                 <li class="has-mega-menu">
                     <a href="#leistungen">Dienstleistungen <i class="fa-solid fa-angle-down" style="font-size: 0.7rem;"></i></a>
                     <div class="mega-menu">
                         <a href="#preise" class="mega-item">
                             <div class="mega-img-box"><img src="11.jpg" alt="Nails"></div>
                             <span>Nails</span>
-                            <p>Maniküre, Pediküre, Gel & Acryl System</p>
+                            <p>Exklusive Maniküre, Pediküre & Design</p>
                         </a>
                         <a href="#preise" class="mega-item">
                             <div class="mega-img-box"><img src="12.jpg" alt="Wimpern"></div>
                             <span>Wimpern</span>
-                            <p>Classic 1:1, Volumentechnik, Lashlifting</p>
+                            <p>Premium Lash Extensions & Lifting</p>
                         </a>
                     </div>
                 </li>
-                
                 <li><a href="#galerie">Galerie</a></li>
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
-            <!-- Nút gọi trên Header (Chỉ hiện Desktop) -->
             <a href="tel:+4937528389180" class="header-btn">Jetzt anrufen</a>
             <div class="menu-toggle" id="mobile-menu"><i class="fa-solid fa-bars"></i></div>
         </nav>
     </header>
 
-    <!-- Nút Gọi Trôi Nổi (FAB) -->
     <div class="fab-container">
         <a href="tel:+4937528389180" class="fab"><i class="fa-solid fa-phone"></i></a>
     </div>
 
-    <!-- Hero -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Fun Nails</h1>
-            <p>American Style Nails & Wimpernverlängerung</p>
-            <!-- Nút gọi giữa trang chủ -->
-            <a href="tel:+4937528389180" class="btn-main">Jetzt anrufen</a>
+            <p>Premium American Style Nails & Wimpernverlängerung</p>
+            <a href="tel:+4937528389180" class="btn-main">Termin Vereinbaren</a>
         </div>
     </section>
 
-    <!-- Über uns -->
     <section id="ueber-uns">
         <h2 class="section-title anim fade-up">Willkommen</h2>
         <div class="about-container">
             <div class="about-text anim fade-up">
-                <p>Treten Sie ein in eine Welt der Entspannung und Schönheit. Bei <strong>Fun Nails</strong> in den Zwickau Arcaden bieten wir Ihnen professionelle Nagelpflege und exklusive Wimpernverlängerungen auf höchstem Niveau.</p><br>
-                <p>Unser minimalistisch und modern eingerichtetes Studio lädt zum Wohlfühlen ein. Mit komfortablen Massage-Pediküre-Stühlen und hellen, hygienischen Arbeitsplätzen garantieren wir Ihnen eine entspannte Auszeit. <strong>Ihre Zufriedenheit und Hygiene</strong> stehen für uns stets an erster Stelle.</p>
+                <p>Erleben Sie Luxus pur. Bei <strong>Fun Nails</strong> in den Zwickau Arcaden vereinen wir meisterhafte Handwerkskunst mit erstklassigen Produkten, um Ihnen professionelle Nagelpflege und exklusive Wimpernverlängerungen auf höchstem Niveau zu bieten.</p><br>
+                <p>Unser helles und modernes Studioambiente lädt zum Verweilen und Entspannen ein. Mit modernen Massage-Pediküre-Stühlen und höchsten Hygienestandards garantieren wir Ihnen eine vollkommene Auszeit vom Alltag. <strong>Ihre absolute Zufriedenheit</strong> ist unser höchster Anspruch.</p>
             </div>
             <div class="about-image anim fade-up">
                 <img src="1.jpg" alt="Interior Fun Nails">
@@ -396,34 +383,32 @@
         </div>
     </section>
 
-    <!-- Leistungen -->
     <section id="leistungen">
         <h2 class="section-title anim fade-up">Dienstleistungen</h2>
         <div class="services-grid">
             <div class="service-card anim fade-up">
                 <i class="fa-solid fa-hand-sparkles"></i>
                 <h3>Maniküre & Pediküre</h3>
-                <p>Klassische Pflege für zarte Hände und Füße.</p>
+                <p>Exklusive Pflege für samtweiche Hände und makellose Füße.</p>
             </div>
             <div class="service-card anim fade-up" style="transition-delay: 0.1s;">
                 <i class="fa-solid fa-gem"></i>
                 <h3>Gel & Acryl</h3>
-                <p>Professionelle Naturnagelverstärkung im American Style.</p>
+                <p>Premium Naturnagelverstärkung im makellosen American Style.</p>
             </div>
             <div class="service-card anim fade-up" style="transition-delay: 0.2s;">
                 <i class="fa-solid fa-eye"></i>
                 <h3>Wimpern</h3>
-                <p>Von Classic (1:1) bis zur glamourösen 7D Volumentechnik.</p>
+                <p>Von eleganter Classic (1:1) bis zur luxuriösen 7D Volumentechnik.</p>
             </div>
             <div class="service-card anim fade-up" style="transition-delay: 0.3s;">
                 <i class="fa-solid fa-palette"></i>
                 <h3>Extras</h3>
-                <p>Lashlifting, Augenbrauenstyling und kreatives Nailart.</p>
+                <p>Lashlifting, Augenbrauenstyling und meisterhaftes Nailart-Design.</p>
             </div>
         </div>
     </section>
 
-    <!-- Preisliste -->
     <section id="preise">
         <h2 class="section-title anim fade-up">Preisliste</h2>
         <div class="pricing-wrapper">
@@ -431,7 +416,6 @@
             <div class="pricing-box anim fade-up">
                 <h3 class="box-title">Nails (American Style)</h3>
                 
-                <!-- Hình ảnh Móng minh hoạ -->
                 <div class="pricing-img-wrapper">
                     <img src="14.png" alt="Nails Art">
                 </div>
@@ -474,7 +458,6 @@
             <div class="pricing-box anim fade-up" style="transition-delay: 0.2s;">
                 <h3 class="box-title">Wimpern & Beauty</h3>
                 
-                <!-- Hình ảnh Mi minh hoạ -->
                 <div class="pricing-img-wrapper">
                     <img src="13.jpg" alt="Wimpernverlängerung">
                 </div>
@@ -510,7 +493,6 @@
         </div>
     </section>
 
-    <!-- Testimonials Slider -->
     <section class="testimonials">
         <h2 class="section-title anim fade-up">Kundenstimmen</h2>
         <div class="testi-slider-container">
@@ -562,16 +544,15 @@
         </div>
     </section>
 
-    <!-- Gallery DÙNG ẢNH GỐC -->
+    <!-- Áp dụng Layout Masonry cho Thư viện ảnh -->
     <section id="galerie">
         <h2 class="section-title anim fade-up">Galerie</h2>
-        <div class="gallery-grid">
+        <div class="gallery-masonry">
             <div class="gallery-item anim fade-up"><img src="9.jpg" alt="Wimpernverlängerung"></div>
             <div class="gallery-item anim fade-up" style="transition-delay: 0.1s;"><img src="10.jpg" alt="Wimpern Top View"></div>
             <div class="gallery-item anim fade-up" style="transition-delay: 0.2s;"><img src="12.jpg" alt="Lashes Face"></div>
             <div class="gallery-item anim fade-up" style="transition-delay: 0.3s;"><img src="2.jpg" alt="Pediküre Massage Stühle"></div>
-        </div>
-        <div class="gallery-grid">
+            
             <div class="gallery-item anim fade-up"><img src="11.jpg" alt="Black Pointed Nails"></div>
             <div class="gallery-item anim fade-up" style="transition-delay: 0.1s;"><img src="6.jpg" alt="Nail Art Design"></div>
             <div class="gallery-item anim fade-up" style="transition-delay: 0.2s;"><img src="5.jpg" alt="Nail Art mit Strass"></div>
@@ -579,14 +560,13 @@
         </div>
     </section>
 
-    <!-- Contact Info -->
-    <section id="kontakt" style="background-color: var(--white); padding-top: 5rem;">
+    <section id="kontakt">
         <div class="info-section">
             <div class="info-card anim fade-up">
                 <i class="fa-regular fa-clock"></i>
                 <h3>Öffnungszeiten</h3>
                 <p>Montag - Samstag</p>
-                <p style="color: var(--black); margin-top: 10px; font-weight: 500;">09:00 - 20:00 Uhr</p>
+                <p><strong>09:00 - 20:00 Uhr</strong></p>
             </div>
             <div class="info-card anim fade-up" style="transition-delay: 0.1s;">
                 <i class="fa-solid fa-location-dot"></i>
@@ -598,13 +578,12 @@
             <div class="info-card anim fade-up" style="transition-delay: 0.2s;">
                 <i class="fa-solid fa-phone"></i>
                 <h3>Kontakt</h3>
-                <p><a href="tel:+4937528389180" style="color: var(--black); font-weight: 500;">0375 - 28 38 91 80</a></p>
+                <p><a href="tel:+4937528389180">0375 - 28 38 91 80</a></p>
                 <p style="margin-top: 10px;"><a href="mailto:haitau30061970@gmail.com">haitau30061970@gmail.com</a></p>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-logo-container">
             <img src="logo.png" alt="Fun Nails Logo" class="footer-logo">
@@ -632,11 +611,10 @@
         </div>
 
         <div class="footer-bottom">
-            <p>© 2024 Fun Nails Zwickau. Alle Rechte vorbehalten. | Premium Nails & Wimpernverlängerung</p>
+            <p>© 2024 Fun Nails Zwickau. Alle Rechte vorbehalten. | Exklusive Nails & Beauty</p>
         </div>
     </footer>
 
-    <!-- Script -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
@@ -653,8 +631,8 @@
 
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) { header.style.padding = '10px 5%'; } 
-                else { header.style.padding = '15px 5%'; }
+                if (window.scrollY > 50) { header.style.padding = '10px 5%'; header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';} 
+                else { header.style.padding = '15px 5%'; header.style.boxShadow = '0 2px 15px rgba(0,0,0,0.05)';}
             });
 
             const menuToggle = document.getElementById('mobile-menu');
@@ -671,7 +649,6 @@
                 }
             });
 
-            // Mobile: Đóng menu khi click vào link
             navLinks.forEach(link => {
                 link.addEventListener('click', function() {
                     if (window.innerWidth <= 900) {

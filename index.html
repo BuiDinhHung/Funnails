@@ -13,11 +13,12 @@
     <style>
         :root {
             --bg-white: #ffffff;
-            --bg-light: #fcfcfc;
-            --bg-gray: #f5f5f5;
-            --text-dark: #1a1a1a;
-            --text-muted: #555555;
-            --border-light: #eaeaea;
+            --bg-light: #050505;
+            --bg-gray: #101010;
+            --text-dark: #ffffff;
+            --text-muted: #d7d7d7;
+            --border-light: #2b2b2b;
+            --card-dark: #141414;
 
             /* Tông Đỏ Sang Trọng làm điểm nhấn */
             --red-primary: #D32F2F;
@@ -52,7 +53,7 @@
            HEADER BỐ CỤC THEO ẢNH NC NAILS
            ========================================= */
         header {
-            background-color: rgba(255, 255, 255, 0.98);
+            background-color: rgba(0, 0, 0, 0.92);
             backdrop-filter: blur(10px);
             padding: 12px 5%;
             display: flex;
@@ -62,7 +63,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 18px rgba(0, 0, 0, 0.6);
             transition: padding 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -169,11 +170,11 @@
             top: calc(100% + 15px);
             left: 50%;
             transform: translateX(-50%) translateY(15px);
-            background-color: var(--bg-white);
+            background-color: var(--card-dark);
             width: max-content;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
             display: flex;
             gap: 20px;
             opacity: 0;
@@ -268,19 +269,30 @@
             align-items: center;
             justify-content: center;
             padding-top: 80px;
+            background: #fff;
             overflow: hidden;
         }
 
-        .hero::before {
+        .hero::before,
+        .hero::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('11.jpg') center/cover;
-            z-index: -1;
+            z-index: 0;
+        }
+
+        .hero::before {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.08)), url('image_1779081390299.jpg') center/cover;
             animation: bgZoom 25s infinite alternate ease-in-out;
+        }
+
+        .hero::after {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.06)), url('7.jpg') center/cover;
+            opacity: 0;
+            animation: heroFade 10s infinite ease-in-out;
         }
 
         @keyframes bgZoom {
@@ -293,22 +305,34 @@
             }
         }
 
+        @keyframes heroFade {
+            0%,
+            42% {
+                opacity: 0;
+            }
+
+            50%,
+            92% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
         .hero-content {
+            position: relative;
             z-index: 1;
             max-width: 1100px;
             /* Đã tăng chiều rộng tổng thể để có chỗ cho ảnh to hơn */
             width: 100%;
             padding: 0 5%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5rem;
+            display: block;
         }
 
         .hero-img-box {
-            flex-shrink: 0;
-            animation: fadeInUp 1s ease forwards;
-            opacity: 0;
+            display: none;
         }
 
         .hero-img-box img {
@@ -317,34 +341,36 @@
             /* Kích thước cũ là 320x450, đã tăng lên khá to và cân đối */
             object-fit: cover;
             border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-            border: 3px solid rgba(255, 255, 255, 0.15);
+            background: #fff;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75);
+            border: 3px solid rgba(255, 255, 255, 0.7);
         }
 
         .hero-text-box {
-            text-align: center;
+            max-width: 620px;
+            text-align: left;
             animation: fadeInRight 1s ease 0.3s forwards;
             opacity: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: 5rem;
-            color: var(--bg-white);
+            color: #0a0a0a;
             margin-bottom: 0.5rem;
             line-height: 1.1;
             font-weight: 600;
             letter-spacing: 3px;
-            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            text-shadow: none;
         }
 
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 3rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: #222222;
             font-weight: 400;
             letter-spacing: 5px;
             text-transform: uppercase;
@@ -373,7 +399,7 @@
 
         /* --- ABOUT US --- */
         #ueber-uns {
-            background-color: var(--bg-white);
+            background-color: var(--bg-light);
         }
 
         .about-container {
@@ -409,7 +435,7 @@
             left: 20px;
             right: -20px;
             bottom: -20px;
-            background-color: var(--red-light);
+            background-color: rgba(211, 47, 47, 0.18);
             z-index: 0;
             border-radius: 8px;
         }
@@ -420,7 +446,7 @@
             z-index: 1;
             border-radius: 8px;
             object-fit: cover;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
         }
 
         /* --- SERVICES CARDS --- */
@@ -437,7 +463,7 @@
         }
 
         .service-card {
-            background: var(--bg-white);
+            background: var(--card-dark);
             padding: 3.5rem 2rem;
             text-align: center;
             border-radius: 8px;
@@ -447,7 +473,7 @@
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
             border-color: var(--red-primary);
         }
 
@@ -479,7 +505,7 @@
 
         /* --- PRICING --- */
         #preise {
-            background-color: var(--bg-white);
+            background-color: var(--bg-light);
         }
 
         .pricing-wrapper {
@@ -491,11 +517,11 @@
         }
 
         .pricing-box {
-            background: var(--bg-white);
+            background: var(--card-dark);
             padding: 3rem;
             border-radius: 12px;
             border: 1px solid var(--border-light);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
         }
 
         .pricing-box h3.box-title {
@@ -517,7 +543,7 @@
 
         .pricing-img-wrapper img {
             width: 100%;
-            height: 200px;
+            height: 340px;
             object-fit: cover;
             transition: transform 0.8s ease;
             display: block;
@@ -558,7 +584,7 @@
             color: var(--text-muted);
             font-size: 0.95rem;
             padding-right: 10px;
-            background: var(--bg-white);
+            background: var(--card-dark);
             z-index: 1;
         }
 
@@ -577,7 +603,7 @@
             white-space: nowrap;
             font-size: 1.05rem;
             padding-left: 10px;
-            background: var(--bg-white);
+            background: var(--card-dark);
             z-index: 1;
         }
 
@@ -595,7 +621,7 @@
 
         /* --- TESTIMONIALS SLIDER --- */
         .testimonials {
-            background-color: var(--bg-light);
+            background-color: var(--bg-gray);
             text-align: center;
             overflow: hidden;
             padding: 6rem 5%;
@@ -622,7 +648,7 @@
         }
 
         .testi-card {
-            background: var(--bg-white);
+            background: var(--card-dark);
             padding: 3rem 2.5rem;
             border: 1px solid var(--border-light);
             border-top: 3px solid var(--red-primary);
@@ -634,7 +660,7 @@
             flex-direction: column;
             justify-content: space-between;
             text-align: center;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
         }
 
         .testi-card:hover {
@@ -677,36 +703,90 @@
             }
         }
 
-        /* --- GALLERY MASONRY --- */
+        /* --- AUTO GALLERY --- */
         #galerie {
-            background-color: var(--bg-white);
+            background-color: #000;
+            overflow: hidden;
         }
 
+        .gallery-slider {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 0.5rem 0 1rem;
+        }
+
+        .gallery-slider::before,
+        .gallery-slider::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 9%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .gallery-slider::before {
+            left: 0;
+            background: linear-gradient(to right, #000, rgba(0, 0, 0, 0));
+        }
+
+        .gallery-slider::after {
+            right: 0;
+            background: linear-gradient(to left, #000, rgba(0, 0, 0, 0));
+        }
+
+        .gallery-track,
         .gallery-masonry {
-            column-count: 4;
-            column-gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            display: flex;
+            gap: 2rem;
+            width: max-content;
+            animation: gallery-scroll 46s linear infinite;
+        }
+
+        .gallery-track:hover,
+        .gallery-masonry:hover {
+            animation-play-state: paused;
         }
 
         .gallery-item {
-            break-inside: avoid;
-            margin-bottom: 20px;
+            width: clamp(240px, 23vw, 360px);
+            aspect-ratio: 4 / 5;
             border-radius: 8px;
             overflow: hidden;
             position: relative;
             cursor: pointer;
+            flex: 0 0 auto;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: #111;
         }
 
         .gallery-item img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
             transition: transform 0.8s ease;
         }
 
         .gallery-item:hover img {
             transform: scale(1.05);
+        }
+
+        #galerie .gallery-masonry {
+            opacity: 1;
+            transform: none;
+        }
+
+        @keyframes gallery-scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-50% - 1rem));
+            }
         }
 
         /* --- INFO / KONTAKT --- */
@@ -722,10 +802,10 @@
             max-width: 1200px;
             margin: 0 auto;
             border: 1px solid var(--border-light);
-            background: var(--bg-white);
+            background: var(--card-dark);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
         }
 
         .info-card {
@@ -983,7 +1063,7 @@
         @media (max-width: 900px) {
             header {
                 padding: 15px 5%;
-                background-color: var(--bg-white);
+                background-color: rgba(0, 0, 0, 0.96);
             }
 
             .logo-img {
@@ -1013,7 +1093,7 @@
                 top: 71px;
                 left: 0;
                 width: 100%;
-                background-color: var(--bg-white);
+                background-color: #050505;
                 flex-direction: column;
                 align-items: center;
                 gap: 0;
@@ -1024,7 +1104,7 @@
                 overflow: hidden;
                 transition: max-height 0.4s ease-in-out;
                 z-index: 999;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
             }
 
             .nav-list.nav-active {
@@ -1124,8 +1204,14 @@
                 padding: 2rem 1.5rem;
             }
 
+            .gallery-track,
             .gallery-masonry {
-                column-count: 2;
+                gap: 1rem;
+                animation-duration: 34s;
+            }
+
+            .gallery-item {
+                width: 260px;
             }
 
             .info-section {
@@ -1139,7 +1225,7 @@
                 border-right: none;
                 border: 1px solid var(--border-light);
                 margin-bottom: 20px;
-                background: var(--bg-white);
+                background: var(--card-dark);
                 border-radius: 8px;
             }
 
@@ -1160,8 +1246,8 @@
         }
 
         @media (max-width: 500px) {
-            .gallery-masonry {
-                column-count: 1;
+            .gallery-item {
+                width: 230px;
             }
         }
     </style>
@@ -1183,12 +1269,12 @@
                                 style="font-size: 0.7rem;"></i></a>
                         <div class="mega-menu">
                             <a href="#preise" class="mega-item">
-                                <div class="mega-img-box"><img src="11.jpg" alt="Nails"></div>
+                                <div class="mega-img-box"><img src="d36c0c495c9b569c972353b271377f85db593cbb.jpg" alt="Nails"></div>
                                 <span>Nails</span>
                                 <p>Exklusive Maniküre, Pediküre & Design</p>
                             </a>
                             <a href="#preise" class="mega-item">
-                                <div class="mega-img-box"><img src="12.jpg" alt="Wimpern"></div>
+                                <div class="mega-img-box"><img src="image_1779081389745.jpg" alt="Wimpern"></div>
                                 <span>Wimpern</span>
                                 <p>Premium Lash Extensions & Lifting</p>
                             </a>
@@ -1213,7 +1299,7 @@
             <!-- Hình ảnh dọc chân dung bo góc -->
             <div class="hero-img-box">
                 <!-- Hãy thay ảnh này bằng một ảnh chân dung mẫu nối mi/làm nail thật đẹp của tiệm -->
-                <img src="15.jpg" alt="Fun Nails Beauty Model">
+                <img src="d36c0c495c9b569c972353b271377f85db593cbb.jpg" alt="Fun Nails Nail Design">
             </div>
 
             <!-- Phần chữ Logo và Button nằm bên cạnh ảnh -->
@@ -1237,7 +1323,7 @@
                     Auszeit vom Alltag. <strong>Ihre absolute Zufriedenheit</strong> ist unser höchster Anspruch.</p>
             </div>
             <div class="about-image anim fade-up">
-                <img src="1.jpg" alt="Interior Fun Nails">
+                <img src="image_1779081390164.jpg" alt="Interior Fun Nails">
             </div>
         </div>
     </section>
@@ -1276,7 +1362,7 @@
                 <h3 class="box-title">Nails (American Style)</h3>
 
                 <div class="pricing-img-wrapper">
-                    <img src="14.png" alt="Nails Art">
+                    <img src="d36c0c495c9b569c972353b271377f85db593cbb.jpg" alt="Long Nail Design">
                 </div>
 
                 <div class="pricing-category">
@@ -1483,21 +1569,51 @@
     <section id="galerie">
         <h2 class="section-title anim fade-up">Galerie</h2>
         <div class="gallery-masonry">
-            <div class="gallery-item anim fade-up"><img src="9.jpg" alt="Wimpernverlängerung"></div>
-            <div class="gallery-item anim fade-up" style="transition-delay: 0.1s;"><img src="10.jpg"
+            <div class="gallery-item"><img src="d36c0c495c9b569c972353b271377f85db593cbb.jpg" alt="Long White Nails"></div>
+            <div class="gallery-item"><img src="5cff81108cd60af8871e7182f1165728ae452552.jpg"
                     alt="Wimpern Top View"></div>
-            <div class="gallery-item anim fade-up" style="transition-delay: 0.2s;"><img src="12.jpg" alt="Lashes Face">
+            <div class="gallery-item"><img src="image_1779081389756.jpg" alt="Pink Floral Nails">
             </div>
-            <div class="gallery-item anim fade-up" style="transition-delay: 0.3s;"><img src="2.jpg"
+            <div class="gallery-item"><img src="image_1779081389757.jpg"
                     alt="Pediküre Massage Stühle"></div>
 
-            <div class="gallery-item anim fade-up"><img src="11.jpg" alt="Black Pointed Nails"></div>
-            <div class="gallery-item anim fade-up" style="transition-delay: 0.1s;"><img src="6.jpg"
+            <div class="gallery-item"><img src="image_1779081389758.jpg" alt="Black Floral Nails"></div>
+            <div class="gallery-item"><img src="image_1779081389759.jpg"
                     alt="Nail Art Design"></div>
-            <div class="gallery-item anim fade-up" style="transition-delay: 0.2s;"><img src="5.jpg"
+            <div class="gallery-item"><img src="image_1779081389742.jpg"
                     alt="Nail Art mit Strass"></div>
-            <div class="gallery-item anim fade-up" style="transition-delay: 0.3s;"><img src="4.jpg" alt="Buntes Design">
+            <div class="gallery-item"><img src="image_1779081389745.jpg" alt="Lash Closeup">
             </div>
+            <div class="gallery-item"><img src="image_1779081389748.jpg" alt="Volume Lashes"></div>
+            <div class="gallery-item"><img src="image_1779081389751.jpg" alt="Lash Collage"></div>
+            <div class="gallery-item"><img src="10.jpg" alt="Beauty Work"></div>
+            <div class="gallery-item"><img src="3.jpg" alt="Nail Design"></div>
+            <div class="gallery-item"><img src="4.jpg" alt="Nail Art"></div>
+            <div class="gallery-item"><img src="5.jpg" alt="Nail Art with Stones"></div>
+            <div class="gallery-item"><img src="7.jpg" alt="Salon View"></div>
+            <div class="gallery-item"><img src="8.jpg" alt="Salon Interior"></div>
+            <div class="gallery-item"><img src="image_1779081389753.jpg" alt="Lash Detail"></div>
+            <div class="gallery-item"><img src="image_1779081390063.jpg" alt="Pedicure Chairs"></div>
+            <div class="gallery-item"><img src="image_1779081390397.jpg" alt="Fun Nails Storefront"></div>
+            <div class="gallery-item"><img src="d36c0c495c9b569c972353b271377f85db593cbb.jpg" alt="Long White Nails"></div>
+            <div class="gallery-item"><img src="5cff81108cd60af8871e7182f1165728ae452552.jpg" alt="Crystal Nail Art"></div>
+            <div class="gallery-item"><img src="image_1779081389756.jpg" alt="Pink Floral Nails"></div>
+            <div class="gallery-item"><img src="image_1779081389757.jpg" alt="White Gold Nails"></div>
+            <div class="gallery-item"><img src="image_1779081389758.jpg" alt="Black Floral Nails"></div>
+            <div class="gallery-item"><img src="image_1779081389759.jpg" alt="Black Gold Nails"></div>
+            <div class="gallery-item"><img src="image_1779081389742.jpg" alt="Lash Extensions"></div>
+            <div class="gallery-item"><img src="image_1779081389745.jpg" alt="Lash Closeup"></div>
+            <div class="gallery-item"><img src="image_1779081389748.jpg" alt="Volume Lashes"></div>
+            <div class="gallery-item"><img src="image_1779081389751.jpg" alt="Lash Collage"></div>
+            <div class="gallery-item"><img src="10.jpg" alt="Beauty Work"></div>
+            <div class="gallery-item"><img src="3.jpg" alt="Nail Design"></div>
+            <div class="gallery-item"><img src="4.jpg" alt="Nail Art"></div>
+            <div class="gallery-item"><img src="5.jpg" alt="Nail Art with Stones"></div>
+            <div class="gallery-item"><img src="7.jpg" alt="Salon View"></div>
+            <div class="gallery-item"><img src="8.jpg" alt="Salon Interior"></div>
+            <div class="gallery-item"><img src="image_1779081389753.jpg" alt="Lash Detail"></div>
+            <div class="gallery-item"><img src="image_1779081390063.jpg" alt="Pedicure Chairs"></div>
+            <div class="gallery-item"><img src="image_1779081390397.jpg" alt="Fun Nails Storefront"></div>
         </div>
     </section>
 

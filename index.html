@@ -796,6 +796,84 @@
             }
         }
 
+        /* --- STUDIO SLIDER --- */
+        #studio {
+            background: var(--bg-gray);
+            overflow: hidden;
+            padding-top: 4.5rem;
+            padding-bottom: 4.5rem;
+        }
+
+        .studio-slider {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .studio-slider::before,
+        .studio-slider::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 10%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .studio-slider::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-gray), rgba(16, 16, 16, 0));
+        }
+
+        .studio-slider::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-gray), rgba(16, 16, 16, 0));
+        }
+
+        .studio-track {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            animation: studio-scroll 42s linear infinite;
+        }
+
+        .studio-track:hover {
+            animation-play-state: paused;
+        }
+
+        .studio-item {
+            width: clamp(320px, 46vw, 640px);
+            aspect-ratio: 16 / 10;
+            flex: 0 0 auto;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: #111;
+        }
+
+        .studio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .studio-item:hover img {
+            transform: scale(1.04);
+        }
+
+        @keyframes studio-scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-50% - 0.75rem));
+            }
+        }
+
         /* --- INFO / KONTAKT --- */
         #kontakt {
             background-color: var(--bg-gray);
@@ -1221,6 +1299,16 @@
                 width: 260px;
             }
 
+            .studio-track {
+                gap: 1rem;
+                animation-duration: 32s;
+            }
+
+            .studio-item {
+                width: 82vw;
+                aspect-ratio: 4 / 3;
+            }
+
             .info-section {
                 grid-template-columns: 1fr;
                 border: none;
@@ -1271,6 +1359,7 @@
                 <ul class="nav-list" id="nav-list">
                     <li><a href="#home">Startseite</a></li>
                     <li><a href="#ueber-uns">Über uns</a></li>
+                    <li><a href="#studio">Studio</a></li>
                     <li class="has-mega-menu">
                         <a href="#leistungen">Dienstleistungen <i class="fa-solid fa-angle-down"
                                 style="font-size: 0.7rem;"></i></a>
@@ -1331,6 +1420,26 @@
             </div>
             <div class="about-image anim fade-up">
                 <img src="image_1779081390164.jpg" alt="Interior Fun Nails">
+            </div>
+        </div>
+    </section>
+
+    <section id="studio">
+        <h2 class="section-title anim fade-up">Unser Studio</h2>
+        <div class="studio-slider">
+            <div class="studio-track">
+                <div class="studio-item"><img src="image_1779081390397.jpg" alt="Fun Nails Storefront"></div>
+                <div class="studio-item"><img src="image_1779081390299.jpg" alt="Fun Nails Studio Interior"></div>
+                <div class="studio-item"><img src="image_1779081390164.jpg" alt="Fun Nails Nail Stations"></div>
+                <div class="studio-item"><img src="image_1779081390063.jpg" alt="Fun Nails Pedicure Chairs"></div>
+                <div class="studio-item"><img src="7.jpg" alt="Fun Nails Salon View"></div>
+                <div class="studio-item"><img src="8.jpg" alt="Fun Nails Interior"></div>
+                <div class="studio-item"><img src="image_1779081390397.jpg" alt="Fun Nails Storefront"></div>
+                <div class="studio-item"><img src="image_1779081390299.jpg" alt="Fun Nails Studio Interior"></div>
+                <div class="studio-item"><img src="image_1779081390164.jpg" alt="Fun Nails Nail Stations"></div>
+                <div class="studio-item"><img src="image_1779081390063.jpg" alt="Fun Nails Pedicure Chairs"></div>
+                <div class="studio-item"><img src="7.jpg" alt="Fun Nails Salon View"></div>
+                <div class="studio-item"><img src="8.jpg" alt="Fun Nails Interior"></div>
             </div>
         </div>
     </section>
@@ -1597,11 +1706,7 @@
             <div class="gallery-item"><img src="3.jpg" alt="Nail Design"></div>
             <div class="gallery-item"><img src="4.jpg" alt="Nail Art"></div>
             <div class="gallery-item"><img src="5.jpg" alt="Nail Art with Stones"></div>
-            <div class="gallery-item"><img src="7.jpg" alt="Salon View"></div>
-            <div class="gallery-item"><img src="8.jpg" alt="Salon Interior"></div>
             <div class="gallery-item"><img src="image_1779081389753.jpg" alt="Lash Detail"></div>
-            <div class="gallery-item"><img src="image_1779081390063.jpg" alt="Pedicure Chairs"></div>
-            <div class="gallery-item"><img src="image_1779081390397.jpg" alt="Fun Nails Storefront"></div>
             <div class="gallery-item"><img src="d36c0c495c9b569c972353b271377f85db593cbb.jpg" alt="Long White Nails"></div>
             <div class="gallery-item"><img src="5cff81108cd60af8871e7182f1165728ae452552.jpg" alt="Crystal Nail Art"></div>
             <div class="gallery-item"><img src="image_1779081389756.jpg" alt="Pink Floral Nails"></div>
@@ -1616,11 +1721,7 @@
             <div class="gallery-item"><img src="3.jpg" alt="Nail Design"></div>
             <div class="gallery-item"><img src="4.jpg" alt="Nail Art"></div>
             <div class="gallery-item"><img src="5.jpg" alt="Nail Art with Stones"></div>
-            <div class="gallery-item"><img src="7.jpg" alt="Salon View"></div>
-            <div class="gallery-item"><img src="8.jpg" alt="Salon Interior"></div>
             <div class="gallery-item"><img src="image_1779081389753.jpg" alt="Lash Detail"></div>
-            <div class="gallery-item"><img src="image_1779081390063.jpg" alt="Pedicure Chairs"></div>
-            <div class="gallery-item"><img src="image_1779081390397.jpg" alt="Fun Nails Storefront"></div>
         </div>
     </section>
 
